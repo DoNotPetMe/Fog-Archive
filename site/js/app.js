@@ -122,9 +122,14 @@ let currentView = null;
 function onRoute() {
   const { view, params } = parseHash();
   $$('.tabs a').forEach((a) => a.classList.toggle('on', a.dataset.tab === view));
-  const main = $('#view');
+  let main = $('#view');
   if (view !== 'builds' && modalOpen() && !params.get('p')) closeModal(true);
   const fresh = currentView !== view;
+  // Each page wires its clicks on #view itself. Switching pages swaps in an empty copy of #view,
+  // so the last page's handlers go with it instead of piling up: with two copies of the Builds
+  // handler a category click toggled twice and did nothing, and the Perks handler could hijack
+  // the Builds page's role buttons.
+  if (fresh && currentView !== null) { const clean = main.cloneNode(false); main.replaceWith(clean); main = clean; }
   currentView = view;
   if (fresh) scrollTo({ top: 0 });
   if (view === 'perks') renderPerks(main, params, fresh);
