@@ -1,6 +1,66 @@
 {
  "builds": [
   {
+   "title": "Making Items OVERPOWERED With The BUFFED Chest Build",
+   "role": "survivor",
+   "killer": null,
+   "perks": [
+    "Plunderer's Instinct",
+    "Streetwise",
+    "Ace in the Hole",
+    "Appraisal"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Seine",
+    "url": "https://www.youtube.com/watch?v=qJCA94afV7A",
+    "date": "2026-11-17"
+   },
+   "video": {
+    "id": "qJCA94afV7A",
+    "title": "Making Items OVERPOWERED With The BUFFED Chest Build",
+    "channel": "Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "Making Items OVERPOWERED With The BUFFED Chest Build",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "This Perk Turns The Slasher Into A SPEED DEMON!",
+   "role": "killer",
+   "killer": "The Slasher",
+   "perks": [
+    "Save the best for last",
+    "Unrelenting",
+    "Agitation",
+    "Forever Entwined"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "chazz",
+    "url": "https://www.youtube.com/watch?v=SihjQr4AsZM",
+    "date": "2026-11-17"
+   },
+   "video": {
+    "id": "SihjQr4AsZM",
+    "title": "This Perk Turns The Slasher Into A SPEED DEMON!",
+    "channel": "chazz"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "This Perk Turns The Slasher Into A SPEED DEMON!",
+    "found": "2026-11-17"
+   }
+  },
+  {
    "title": "Basic Attack Slasher",
    "role": "killer",
    "killer": "The Slasher",
