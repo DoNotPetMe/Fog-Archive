@@ -12,7 +12,7 @@
 //   a comment by the creator / pinned comment    medium
 //   other viewers' comments                      low ("risky")
 
-import { makePerkIndex, detectVideoBuilds, extractBuilds, titleCategories, looksLikeBuildVideo } from './lib/detect.mjs';
+import { makePerkIndex, detectVideoBuilds, extractBuilds, titleCategories, looksLikeBuildVideo, findKiller } from './lib/detect.mjs';
 import { normName } from './lib/text.mjs';
 
 const DEFAULT_CHANNELS = [
@@ -269,7 +269,8 @@ async function detectText({ texts, from, video }) {
         const label = m && !/^(hex|boon|scourge hook|teamwork|invocation)$/i.test(m[1].trim()) ? m[1].trim() : '';
         const ps = perksInText(label ? m[2] : line, index);
         if (ps.length >= 4 && ps.length % 4 === 0 && ps.every((p) => p.role === ps[0].role)) {
-          for (let i = 0; i < ps.length; i += 4) candidates.push({ label: ps.length === 4 ? label : '', part: ps.length > 4 ? `Build ${i / 4 + 1}` : '', perks: ps.slice(i, i + 4), role: ps[0].role, killer: null });
+          const killer = ps[0].role === 'killer' ? findKiller(killers, label) : null; // "The Legion: ..." -> that killer's build
+          for (let i = 0; i < ps.length; i += 4) candidates.push({ label: ps.length === 4 ? label : '', part: ps.length > 4 ? `Build ${i / 4 + 1}` : '', perks: ps.slice(i, i + 4), role: ps[0].role, killer });
         }
       }
     }

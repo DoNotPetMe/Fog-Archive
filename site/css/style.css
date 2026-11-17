@@ -505,3 +505,15 @@ code { font: 13px ui-monospace, Consolas, monospace; background: #0b0f12; border
   .gb { grid-template-columns: auto 1fr; }
   .gb .btn { grid-column: 1 / -1; justify-self: start; }
 }
+
+/* killers beside each build on multi-killer videos */
+.mini-build { display: inline-flex; align-items: center; gap: 1px; }
+.mini-loadouts.with-killers { gap: 6px; }
+.mini-killer { width: 24px; height: 24px; object-fit: cover; object-position: top; border: 1px solid var(--line-2); background: #0b0f12;
+  clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px); flex: none; }
+.mini-killer.any, .gb-killer.any { display: grid; place-items: center; font: 700 9px var(--cond); letter-spacing: .06em; color: var(--muted); }
+.gb-art { display: inline-flex; align-items: center; gap: 6px; }
+.gb-killer { width: 46px; height: 46px; object-fit: cover; object-position: top; border: 1px solid var(--line-2); background: #0b0f12;
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px); flex: none; }
+.card.group .mini-loadouts { grid-column: 1 / -1; padding-top: 2px; border-top: 1px solid #1a2126; gap: 10px; }
+.card.group .mini-killer { width: 38px; height: 38px; border-color: #5a1a1d; box-shadow: 0 0 8px rgba(179, 19, 27, .35); }

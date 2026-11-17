@@ -141,7 +141,7 @@
   }
 
   // --------------------------------------------------------- YouTube's AI
-  const QUESTION = "Which perk builds are used in this video? If the video has more than one build, list them all, one build per line, starting with the build's name if it has one (Name: perk, perk, perk, perk). If a build has no name, just list its four perks separated by commas. Use the exact perk names and nothing else.";
+  const QUESTION = "Which perk builds are used in this video? If different killers are played with different builds, give one line per killer: the killer's name, then the exact four perks used on that killer (The Legion: perk, perk, perk, perk). Otherwise, if the video has more than one build, give one line per build, starting with the build's name if it has one (Name: perk, perk, perk, perk); a build without a name is just its four perks separated by commas. Use the exact perk names and nothing else.";
   // YouTube's own search bar and top bar: never typed into, whatever happens
   const SEARCH_UI = 'ytd-masthead, #masthead, #masthead-container, ytd-searchbox, yt-searchbox, #search, form#search-form, #search-form';
   const isSearchUi = (n) => !!n.closest(SEARCH_UI) || n.getAttribute?.('name') === 'search_query';

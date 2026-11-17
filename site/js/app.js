@@ -357,19 +357,28 @@ function groupItems(list) {
   return out;
 }
 
+/** A killer's portrait for the space beside a build's perks. */
+function killerIcon(b, cls = 'mini-killer') {
+  const k = b.killer ? store.killerById.get(b.killer.id) : null;
+  if (!k) return b.role === 'killer' ? `<span class="${cls} any" title="Any killer">ANY</span>` : '';
+  return k.portrait ? `<img class="${cls}" src="${esc(k.portrait)}" alt="${esc(k.name)}" title="${esc(k.name)}" loading="lazy" width="48" height="48">` : `<span class="${cls} any" title="${esc(k.name)}">${esc(k.name.replace(/^The /, '').slice(0, 3))}</span>`;
+}
+
 function groupCardHtml({ group: vid, builds }) {
   const { title, channel } = videoInfo(builds);
   const killers = [...new Set(builds.map((b) => b.killer?.name).filter(Boolean))].map((k) => k.replace(/^The /, ''));
+  const multiKiller = killers.length > 1;
   const role = builds.every((b) => b.role === 'survivor') ? 'survivor' : 'killer';
   const cats = [...new Set(builds.flatMap((b) => b.categories || []))];
   return `<article class="card group ${role}" tabindex="0" role="button" data-video="${esc(vid)}" aria-label="${esc(title)}: ${builds.length} builds">
     ${CLAW('tr')}${CLAW('bl')}
     <div class="vthumb"><img src="https://i.ytimg.com/vi/${esc(vid)}/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span class="multi-ribbon">${builds.length} builds</span></div>
-    <div class="card-body"><div class="who"><span class="dot"></span>${esc(channel)}${killers.length ? ` · ${esc(killers.slice(0, 3).join(', '))}${killers.length > 3 ? '…' : ''}` : ''}</div>
+    <div class="card-body"><div class="who"><span class="dot"></span>${esc(channel)}${killers.length === 1 ? ` · ${esc(killers[0])}` : ''}</div>
       <h3>${esc(title)}</h3>
-      <div class="mini-loadouts">${builds.slice(0, 4).map((b) => loadoutHtml(b.perks, { layout: b.layout, size: 26 })).join('')}${builds.length > 4 ? `<span class="more-n">+${builds.length - 4}</span>` : ''}</div>
+
       <div class="badges"><span class="badge multi">Multi-build · ${builds.length}</span>${cats.map((c) => `<span class="badge ${esc(c)}">${esc(tagLabel(c))}</span>`).join('')}</div>
-    </div></article>`;
+    </div>
+    <div class="mini-loadouts${multiKiller ? ' with-killers' : ''}">${builds.slice(0, 4).map((b) => `<span class="mini-build">${multiKiller ? killerIcon(b) : ''}${loadoutHtml(b.perks, { layout: b.layout, size: 26 })}</span>`).join('')}${builds.length > 4 ? `<span class="more-n">+${builds.length - 4}</span>` : ''}</div></article>`;
 }
 
 /** A short line per build: a short checked write-up, or the summary built from the perks. */
@@ -391,8 +400,9 @@ function openGroup(vid) {
 function showGroup(vid) {
   const builds = store.videoGroups.get(vid);
   const { title, channel } = videoInfo(builds);
+  const multiKiller = new Set(builds.map((b) => b.killer?.id).filter(Boolean)).size > 1;
   const rows = builds.map((b, i) => `<div class="gb ${b.role}">
-      ${loadoutHtml(b.perks, { layout: b.layout, size: 58 })}
+      <span class="gb-art">${multiKiller ? killerIcon(b, 'gb-killer') : ''}${loadoutHtml(b.perks, { layout: b.layout, size: 58 })}</span>
       <div class="gb-body"><div class="who">${b.killer ? esc(b.killer.name) : b.role === 'killer' ? 'Any killer' : 'Survivor'}</div>
         <h4>${esc(buildLabel(b, title, i))}</h4><p>${esc(briefOf(b))}</p>
         <div class="badges">${foundBadge(b)}${drBadge(b.dr)}${b.local ? '<span class="badge mine">Extension</span>' : ''}</div></div>
