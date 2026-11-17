@@ -61,6 +61,21 @@ export function rebuildBuildList() {
   const ext = store.ext.builds.map((b) => normaliseLocal(b, 'ext')).filter(Boolean);
   store.builds = [...mine, ...ext, ...apiBuilds];
   store.buildById = new Map(store.builds.map((b) => [b.id, b]));
+  // a video with several builds is shown as one multi-build card
+  store.videoGroups = new Map();
+  for (const b of store.builds) {
+    const v = b.video?.id;
+    if (!v) continue;
+    if (!store.videoGroups.has(v)) store.videoGroups.set(v, []);
+    store.videoGroups.get(v).push(b);
+  }
+  for (const [v, list] of store.videoGroups) {
+    const seen = new Set(); // the same build found by the archive and the extension counts once
+    const uniq = list.filter((b) => { const k = [...b.perks].sort().join('|'); if (seen.has(k)) return false; seen.add(k); return true; });
+    if (uniq.length < 2) { store.videoGroups.delete(v); continue; }
+    store.videoGroups.set(v, uniq);
+    for (const b of uniq) if (!b.tags.includes('multi-build')) b.tags.push('multi-build');
+  }
   indexBuilds(store.builds, store.perkById);
 }
 
@@ -233,6 +248,7 @@ function renderBuilds(main, params, fresh) {
         <div class="chips" id="cats"><span class="chip-label">Category</span>
           ${CATS.map(([id, label]) => chip(id, label, countOf(id), false, `cat-${id}`)).join('')}
           ${chip('video', 'Has video', countOf('video'), false)}${chip('diminishing-returns', 'Diminishing returns', countOf('diminishing-returns'), false)}
+          ${store.videoGroups.size ? chip('multi-build', 'Multi-build videos', store.videoGroups.size, false, 'cat-multi') : ''}
           ${mineCount ? chip('mine', 'My builds', mineCount, false) : ''}
         </div>
         <div class="killers" id="killers" aria-label="Filter by killer">
@@ -268,14 +284,17 @@ function renderBuilds(main, params, fresh) {
   const active = f.q || f.role || f.tags.length || f.killer;
   $('#active', main).innerHTML = active ? '<button class="linkish" id="clear">Clear filters</button>' : '';
   const grid = $('#grid', main);
+  const items = groupItems(list);
   grid.innerHTML = list.length
-    ? list.slice(0, shown).map(cardHtml).join('')
+    ? items.slice(0, shown).map((it) => (it.group ? groupCardHtml(it) : cardHtml(it.build))).join('')
     : '<div class="empty-state" style="grid-column:1/-1"><h3>The fog gives nothing back</h3><p>No build matches those filters. Try fewer tags or a different search.</p></div>';
-  $('#more', main).hidden = list.length <= shown;
+  $('#more', main).hidden = items.length <= shown;
 
   // build detail lives in the URL too, so links to a build can be shared
   const open = params.get('b');
+  const openV = params.get('v');
   if (open && store.buildById.has(open)) showBuild(store.buildById.get(open));
+  else if (openV && store.videoGroups.has(openV)) showGroup(openV);
   else if (modalOpen() && !open) closeModal(true);
 }
 
@@ -298,11 +317,11 @@ function wireBuilds(main) {
     if (e.target.id === 'tag-toggle') { const m = $('#tag-more', main); const open = m.classList.toggle('open'); e.target.textContent = open ? 'Fewer tags' : 'More tags'; e.target.setAttribute('aria-expanded', open); return; }
     if (e.target.id === 'more') { shown += PAGE; lastKey = JSON.stringify(filtersFrom(parseHash().params)); return onRoute(); }
     const card = e.target.closest('.card');
-    if (card) openBuild(card.dataset.build);
+    if (card) (card.dataset.video ? openGroup(card.dataset.video) : openBuild(card.dataset.build));
   });
   main.addEventListener('keydown', (e) => {
     const card = e.target.closest?.('.card');
-    if (card && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); openBuild(card.dataset.build); }
+    if (card && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); card.dataset.video ? openGroup(card.dataset.video) : openBuild(card.dataset.build); }
   });
   $('#sort', main).addEventListener('change', (e) => update((f) => { f.sort = e.target.value; }));
   $('#offer', main).addEventListener('click', async () => {
@@ -315,6 +334,81 @@ function wireBuilds(main) {
     const pick = pool[Math.floor(Math.random() * pool.length)];
     toast(grade === 'great' ? 'Great skill check — the Entity is pleased' : grade === 'good' ? 'The Entity accepts your offering' : 'The Entity is displeased… but shows you something anyway');
     openBuild(pick.id);
+  });
+}
+
+const cleanVideoTitle = (t) => String(t || '').replace(/\s*\|\s*dead by daylight.*$/i, '').trim();
+function videoInfo(builds) {
+  const b = builds.find((x) => x.video?.title) || builds[0];
+  return { title: cleanVideoTitle(b.video?.title || b.detection?.videoTitle || b.title), channel: b.video?.channel || b.source?.name || '' };
+}
+
+function groupItems(list) {
+  const out = [];
+  const done = new Set();
+  for (const b of list) {
+    const v = b.video?.id;
+    if (v && store.videoGroups.has(v)) {
+      if (done.has(v)) continue;
+      done.add(v);
+      out.push({ group: v, builds: store.videoGroups.get(v) });
+    } else out.push({ build: b });
+  }
+  return out;
+}
+
+function groupCardHtml({ group: vid, builds }) {
+  const { title, channel } = videoInfo(builds);
+  const killers = [...new Set(builds.map((b) => b.killer?.name).filter(Boolean))].map((k) => k.replace(/^The /, ''));
+  const role = builds.every((b) => b.role === 'survivor') ? 'survivor' : 'killer';
+  const cats = [...new Set(builds.flatMap((b) => b.categories || []))];
+  return `<article class="card group ${role}" tabindex="0" role="button" data-video="${esc(vid)}" aria-label="${esc(title)}: ${builds.length} builds">
+    ${CLAW('tr')}${CLAW('bl')}
+    <div class="vthumb"><img src="https://i.ytimg.com/vi/${esc(vid)}/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span class="multi-ribbon">${builds.length} builds</span></div>
+    <div class="card-body"><div class="who"><span class="dot"></span>${esc(channel)}${killers.length ? ` · ${esc(killers.slice(0, 3).join(', '))}${killers.length > 3 ? '…' : ''}` : ''}</div>
+      <h3>${esc(title)}</h3>
+      <div class="mini-loadouts">${builds.slice(0, 4).map((b) => loadoutHtml(b.perks, { layout: b.layout, size: 26 })).join('')}${builds.length > 4 ? `<span class="more-n">+${builds.length - 4}</span>` : ''}</div>
+      <div class="badges"><span class="badge multi">Multi-build · ${builds.length}</span>${cats.map((c) => `<span class="badge ${esc(c)}">${esc(tagLabel(c))}</span>`).join('')}</div>
+    </div></article>`;
+}
+
+/** A short line per build: a short checked write-up, or the summary built from the perks. */
+function briefOf(b) {
+  if (writeupOk(b) && b.summary && b.summary.length <= 170) return b.summary;
+  return autoSummary(b, b.perks.map((id) => store.perkById.get(id)).filter(Boolean), tagLabel);
+}
+function buildLabel(b, videoTitle, i) {
+  const t = String(b.title || '');
+  const rest = t.startsWith(videoTitle) ? t.slice(videoTitle.length).replace(/^\s*\((.+)\)\s*$/, '$1').trim() : t;
+  return rest && rest !== videoTitle ? rest : `Build ${i + 1}`;
+}
+
+function openGroup(vid) {
+  const { params } = parseHash();
+  setHash('builds', paramsFrom(filtersFrom(params), { v: vid }));
+}
+
+function showGroup(vid) {
+  const builds = store.videoGroups.get(vid);
+  const { title, channel } = videoInfo(builds);
+  const rows = builds.map((b, i) => `<div class="gb ${b.role}">
+      ${loadoutHtml(b.perks, { layout: b.layout, size: 58 })}
+      <div class="gb-body"><div class="who">${b.killer ? esc(b.killer.name) : b.role === 'killer' ? 'Any killer' : 'Survivor'}</div>
+        <h4>${esc(buildLabel(b, title, i))}</h4><p>${esc(briefOf(b))}</p>
+        <div class="badges">${foundBadge(b)}${drBadge(b.dr)}${b.local ? '<span class="badge mine">Extension</span>' : ''}</div></div>
+      <button class="btn small" data-open-build="${esc(b.id)}">Full details</button></div>`).join('');
+  const html = `<div class="group-head">
+      <div class="video" data-video="${esc(vid)}"><button aria-label="Play video: ${esc(title)}"><img src="https://i.ytimg.com/vi/${esc(vid)}/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span></button></div>
+      <div><div class="who">${esc(channel)} · ${builds.length} builds in this video</div><h2>${esc(title)}</h2>
+        <p class="summary">Each build is kept to one line here. Open one for its perks, diminishing returns and full write-up.</p>
+        <a class="btn small" href="https://www.youtube.com/watch?v=${esc(vid)}" target="_blank" rel="noopener noreferrer">Watch on YouTube</a></div>
+    </div><div class="group-list">${rows}</div>`;
+  const modal = openModal(html, { cls: 'group', label: title, onClose: () => { const { params } = parseHash(); if (params.get('v')) setHash('builds', paramsFrom(filtersFrom(params)), true); } });
+  modal.addEventListener('click', (e) => { const o = e.target.closest('[data-open-build]'); if (o) openBuild(o.dataset.openBuild); });
+  const v = $('.video', modal);
+  v?.querySelector('button').addEventListener('click', () => {
+    if (!VIDEO_ID.test(vid)) return;
+    v.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${vid}?autoplay=1&rel=0" title="Build video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
   });
 }
 
@@ -362,6 +456,7 @@ function showBuild(b) {
         ${b.evidence ? `<div class="section"><h3 class="section-title">Why it counts as meta</h3><p class="muted">${esc(b.evidence)}</p></div>` : ''}
         <div class="section"><h3 class="section-title">Source</h3>
           <div class="source-line">${b.source?.url ? `<a href="${esc(b.source.url)}" target="_blank" rel="noopener noreferrer">${esc(b.source.name)}</a>` : esc(b.source?.name || 'Unknown')}${b.source?.date ? `<span>· ${esc(b.source.date)}</span>` : ''}${b.detection?.from ? `<span>· found in the ${esc(FOUND[b.detection.from] || b.detection.from)}${b.detection.risk ? ` (${esc(b.detection.risk)})` : ''}</span>` : ''}<span>· values shown are live for patch ${esc(store.meta.gameVersion || '?')}</span></div>
+          ${b.video && store.videoGroups.has(b.video.id) ? `<p class="muted" style="margin:10px 0 0">This build is one of ${store.videoGroups.get(b.video.id).length} in its video. <a class="linkish" href="#/builds?v=${esc(b.video.id)}">See all of them</a></p>` : ''}
           <div class="row" style="margin-top:12px"><a class="btn small" href="#/lab?${new URLSearchParams({ p: b.perks.join(','), ...(k ? { k: k.id } : {}), ...(b.video ? { v: b.video.id } : {}) }).toString()}">Open in Build Lab</a><button class="btn small ghost" id="copy-link">Copy link</button>${b.local === 'mine' ? '<button class="btn small ghost" id="del-build">Delete</button>' : ''}</div>
         </div>
       </div>

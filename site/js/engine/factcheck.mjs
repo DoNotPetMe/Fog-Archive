@@ -388,7 +388,7 @@ export function checkWriteup(build, ctx) {
 
 /** A summary that is true by construction: what the build does, from its tags, and its perks. */
 export function autoSummary(build, perks, tagLabel) {
-  const skip = new Set(['video', 'recommended', 'meta', 'toxic', 'fun', 'beginner', 'creator', 'mine', 'diminishing-returns']);
+  const skip = new Set(['video', 'recommended', 'meta', 'toxic', 'fun', 'beginner', 'creator', 'mine', 'diminishing-returns', 'multi-build']);
   const tags = (build.tags || []).filter((t) => !skip.has(t) && !t.includes(':')).slice(0, 3).map((t) => (tagLabel ? tagLabel(t) : t));
   const names = perks.map((p) => p.name);
   const list = `${names.slice(0, -1).join(', ')} and ${names[names.length - 1]}`;

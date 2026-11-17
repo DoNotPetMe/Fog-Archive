@@ -262,8 +262,17 @@ async function detectText({ texts, from, video }) {
   const out = new Map();
   for (const t of (texts || []).slice(0, 400)) {
     const candidates = [...extractBuilds(t.text, index, killers, video.title)];
-    const loose = perksInText(t.text, index);
-    if (loose.length === 4 && loose.every((p) => p.role === loose[0].role)) candidates.push({ label: '', perks: loose, role: loose[0].role, killer: null });
+    {
+      // also line by line: one build per line ("Chase: a, b, c, d"), or several unnamed builds in a row of 8 / 12 / 16 perks
+      for (const line of String(t.text).split(/\r?\n/)) {
+        const m = /^\s*(?:[-•*\d.)]+\s*)?([^:,]{2,40}):\s*(.+)$/.exec(line);
+        const label = m && !/^(hex|boon|scourge hook|teamwork|invocation)$/i.test(m[1].trim()) ? m[1].trim() : '';
+        const ps = perksInText(label ? m[2] : line, index);
+        if (ps.length >= 4 && ps.length % 4 === 0 && ps.every((p) => p.role === ps[0].role)) {
+          for (let i = 0; i < ps.length; i += 4) candidates.push({ label: ps.length === 4 ? label : '', part: ps.length > 4 ? `Build ${i / 4 + 1}` : '', perks: ps.slice(i, i + 4), role: ps[0].role, killer: null });
+        }
+      }
+    }
     for (const c of candidates) {
       const src = from === 'comment' && t.creator ? 'creator-comment' : from;
       const b = toBuild(c, video, src);
@@ -273,6 +282,30 @@ async function detectText({ texts, from, video }) {
   }
   // a single viewer comment is the riskiest source there is: say so
   return [...out.values()].map((b) => (b.foundIn === 'comment' ? { ...b, risk: b.support > 1 ? `${b.support} viewer comments agree` : 'only one viewer comment says this' } : b));
+}
+
+/**
+ * Buzzword check for "is this a Dead by Daylight video?" so the panel shows on any DBD video,
+ * whichever channel posted it. Clear signals win outright; weaker ones need to add up.
+ */
+async function isDbd({ title = '', channel = '', description = '' }) {
+  const text = `${title}\n${channel}\n${description}`.slice(0, 5000);
+  if (/dead\s*by\s*daylight|#dbd\b|\bdbd\b|\bbhvr\b|behaviour interactive/i.test(text)) return { dbd: true, why: 'keyword' };
+  const s = await settings();
+  if (channel && s.channels.some((c) => c.name && normName(c.name) === normName(channel))) return { dbd: true, why: 'your channel' };
+  const { perkCache } = await chrome.storage.local.get('perkCache');
+  if (!perkCache) return { dbd: false };
+  const low = ` ${text.toLowerCase().replace(/[^a-z0-9:&' ]+/g, ' ').replace(/\s+/g, ' ')} `;
+  let score = 0;
+  for (const p of perkCache.perks) {
+    const n = p.name.toLowerCase();
+    const short = n.replace(/^(hex|boon|scourge hook|teamwork|invocation):\s*/, '');
+    if ([n, short].some((x) => x.includes(' ') && x.length >= 8 && low.includes(` ${x} `))) score += 2; // a two-word perk name
+  }
+  for (const k of perkCache.killers) if (low.includes(` ${k.name.toLowerCase()} `)) score += 1; // "The Legion" (also an English phrase)
+  // distinct DBD words ("killer", "perk", "gens"...), up to 2 points
+  score += Math.min(2, new Set(low.match(/\b(?:survivors?|killers?|perks?|hooks?|gens?|generators?|totems?|the entity|tunnel(?:ing)?|slug(?:ging)?|camp(?:ing)?|loop(?:ing)?)\b/g) || []).size);
+  return { dbd: score >= 3, why: `score ${score}` };
 }
 
 async function resolveChannel(input) {
@@ -311,6 +344,7 @@ const handlers = {
   },
   async 'seen-finds'() { await chrome.storage.local.set({ unseen: 0 }); await setBadge(); return { ok: true }; },
   async 'scan-video'(msg) { return scanVideo(msg.id); },
+  async 'is-dbd'(msg) { return isDbd(msg); },
   async 'detect-text'(msg) { return detectText(msg); },
   async 'save-build'(msg) {
     const b = msg.build;

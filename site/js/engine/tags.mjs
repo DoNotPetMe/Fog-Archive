@@ -13,6 +13,7 @@ export const TAGS = {
   recommended: { label: 'Recommended', group: 'category' },
   beginner: { label: 'Beginner friendly', group: 'category' },
   creator: { label: 'Creator build', group: 'category' },
+  'multi-build': { label: 'Multi-build video', group: 'category' },
   // killer playstyles
   'gen-regression': { label: 'Gen regression', group: 'style' },
   'gen-block': { label: 'Gen blocking', group: 'style' },

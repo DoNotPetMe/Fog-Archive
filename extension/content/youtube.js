@@ -29,10 +29,37 @@
   const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
 
   // ------------------------------------------------------------------ UI
-  function ensureButton() {
+  const dbdCache = new Map(); // video id -> true / false
+  let checking = null;
+
+  /** Is the video on screen about Dead by Daylight? Buzzwords in its title, channel and description. */
+  async function isDbdVideo(id) {
+    if (dbdCache.has(id)) return dbdCache.get(id);
+    // the page swaps its text in after navigating; wait until the title belongs to this video
+    await waitFor(() => document.querySelector('ytd-watch-metadata h1')?.textContent.trim(), 6000);
+    const title = document.querySelector('ytd-watch-metadata h1')?.textContent.trim() || document.title.replace(/\s*-\s*YouTube$/, '');
+    const channel = document.querySelector('ytd-watch-metadata ytd-channel-name a, #owner ytd-channel-name a')?.textContent.trim() || '';
+    const description = (document.querySelector('ytd-watch-metadata #description-inline-expander, #description')?.textContent || '').slice(0, 3000);
+    const r = await send('is-dbd', { title, channel, description });
+    const yes = !!(r.ok && r.data?.dbd);
+    if (videoId() === id) dbdCache.set(id, yes);
+    return yes;
+  }
+
+  async function ensureButton() {
     const id = videoId();
     let btn = document.getElementById('fog-scout-btn');
     if (!id) { btn?.remove(); root?.remove(); root = null; return; }
+    if (!dbdCache.has(id)) {
+      btn?.remove(); root?.remove(); root = null;
+      if (checking === id) return;
+      checking = id;
+      const yes = await isDbdVideo(id);
+      checking = null;
+      if (!yes || videoId() !== id) return;
+      btn = null;
+    } else if (!dbdCache.get(id)) { btn?.remove(); root?.remove(); root = null; return; }
+    btn = document.getElementById('fog-scout-btn');
     if (!btn) {
       btn = el('button', '', 'Find build');
       btn.id = 'fog-scout-btn';
@@ -114,7 +141,7 @@
   }
 
   // --------------------------------------------------------- YouTube's AI
-  const QUESTION = 'Which 4 perks are in the build used in this video? Reply with only the exact perk names, separated by commas.';
+  const QUESTION = "Which perk builds are used in this video? If the video has more than one build, list them all, one build per line, starting with the build's name if it has one (Name: perk, perk, perk, perk). If a build has no name, just list its four perks separated by commas. Use the exact perk names and nothing else.";
   // YouTube's own search bar and top bar: never typed into, whatever happens
   const SEARCH_UI = 'ytd-masthead, #masthead, #masthead-container, ytd-searchbox, yt-searchbox, #search, form#search-form, #search-form';
   const isSearchUi = (n) => !!n.closest(SEARCH_UI) || n.getAttribute?.('name') === 'search_query';
@@ -184,7 +211,7 @@
     const r = await send('detect-text', { texts: [{ text }], from: 'youtube-ai', video: current.video });
     if (!r.ok) { status(r.error, 'bad'); return; }
     addResults(r.data);
-    status(r.data.length ? "Found in YouTube's AI answer (AI can be wrong — check the video):" : "YouTube's AI answer did not name four perks.", r.data.length ? '' : 'bad');
+    status(r.data.length ? `Found ${r.data.length > 1 ? `${r.data.length} builds` : 'a build'} in YouTube's AI answer (AI can be wrong, check the video):` : "YouTube's AI answer did not name four perks.", r.data.length ? '' : 'bad');
   }
 
   // -------------------------------------------------------------- comments
