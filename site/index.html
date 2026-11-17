@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fog Archive — Dead by Daylight builds</title>
+  <meta name="description" content="Toxic, meta and fun Dead by Daylight builds for every killer and survivor, with live perk values and diminishing returns worked out for each build.">
+  <meta name="fog-archive" content="1">
+  <meta name="theme-color" content="#07090b">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://i.ytimg.com data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube-nocookie.com; connect-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="assets/ui/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <!-- atmosphere: fog, embers, the Entity's limbs -->
+  <div class="fog" aria-hidden="true"><i></i><i></i><i></i></div>
+  <canvas id="embers" aria-hidden="true"></canvas>
+  <div id="entity" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#/builds" aria-label="Fog Archive home">
+      <svg viewBox="0 0 48 48" class="brand-mark" aria-hidden="true">
+        <path d="M24 2 46 24 24 46 2 24Z" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M24 9c2 6 1 10-2 14s-3 8 2 16c5-8 5-12 2-16s-4-8-2-14Z" fill="currentColor"/>
+        <path d="M11 22c5 0 8 2 10 6M37 22c-5 0-8 2-10 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-text"><b>Fog Archive</b><small>Dead by Daylight builds</small></span>
+    </a>
+    <nav class="tabs" aria-label="Sections">
+      <a href="#/builds" data-tab="builds">Builds</a>
+      <a href="#/perks" data-tab="perks">Perks</a>
+      <a href="#/lab" data-tab="lab">Build Lab</a>
+      <a href="#/videos" data-tab="videos">Videos</a>
+      <a href="#/changes" data-tab="changes">Changes</a>
+      <a href="#/sources" data-tab="sources">Sources</a>
+    </nav>
+    <a class="status" href="#/sources" id="status" title="Data sources and sync status">
+      <span class="pulse" aria-hidden="true"></span><span id="status-text">Entering the fog…</span>
+    </a>
+  </header>
+
+  <main id="view" tabindex="-1">
+    <div class="loading"><div class="skillcheck-spinner" aria-hidden="true"></div><p>Entering the fog…</p></div>
+  </main>
+
+  <footer class="foot">
+    <p>Fan-made and unofficial. Dead by Daylight and all related names, perks and artwork belong to Behaviour Interactive and their licensors. Builds link to the creators and sites they came from.</p>
+  </footer>
+
+  <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+  <div id="modal-root"></div>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,1505 @@
+{
+ "builds": [
+  {
+   "title": "Basic Attack Slasher",
+   "role": "killer",
+   "killer": "The Slasher",
+   "perks": [
+    "Machine Learning",
+    "Save the best for last",
+    "Whispers",
+    "Hex: Nothing But Misery"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=WpIVjiSokDw",
+    "date": "2026-11-16"
+   },
+   "video": {
+    "id": "WpIVjiSokDw",
+    "title": "I Turned Ranged Killers Into Basic Attack MONSTERS",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "I Turned Ranged Killers Into Basic Attack MONSTERS",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "Basic Attack Animatronic",
+   "role": "killer",
+   "killer": "The Animatronic",
+   "perks": [
+    "Dark Arrogance",
+    "Save the best for last",
+    "Machine Learning",
+    "Hex: Nothing But Misery"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=WpIVjiSokDw",
+    "date": "2026-11-16"
+   },
+   "video": {
+    "id": "WpIVjiSokDw",
+    "title": "I Turned Ranged Killers Into Basic Attack MONSTERS",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "I Turned Ranged Killers Into Basic Attack MONSTERS",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "Basic Attack Huntress",
+   "role": "killer",
+   "killer": "The Huntress",
+   "perks": [
+    "Hex: Devour Hope",
+    "Hex: Undying",
+    "Save the best for last",
+    "Coup de Grâce"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=WpIVjiSokDw",
+    "date": "2026-11-16"
+   },
+   "video": {
+    "id": "WpIVjiSokDw",
+    "title": "I Turned Ranged Killers Into Basic Attack MONSTERS",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "I Turned Ranged Killers Into Basic Attack MONSTERS",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "Basic Attack First",
+   "role": "killer",
+   "killer": "The First",
+   "perks": [
+    "Dark Arrogance",
+    "Save the best for last",
+    "Rapid Brutality",
+    "Hex: Nothing But Misery"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=WpIVjiSokDw",
+    "date": "2026-11-16"
+   },
+   "video": {
+    "id": "WpIVjiSokDw",
+    "title": "I Turned Ranged Killers Into Basic Attack MONSTERS",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "I Turned Ranged Killers Into Basic Attack MONSTERS",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "Abusing Parental Guidance To VANISH In Front of Killers",
+   "role": "survivor",
+   "killer": null,
+   "perks": [
+    "Parental Guidance",
+    "Decisive Strike",
+    "Flashbang",
+    "Iron Will"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Seine",
+    "url": "https://www.youtube.com/watch?v=FGVXrVuMV7s",
+    "date": "2026-11-14"
+   },
+   "video": {
+    "id": "FGVXrVuMV7s",
+    "title": "Abusing Parental Guidance To VANISH In Front of Killers",
+    "channel": "Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "Abusing Parental Guidance To VANISH In Front of Killers",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "I Created DBD's Most BRUTAL Skill Check Penalty",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Overcharge",
+    "Hex: Huntress Lullaby",
+    "Oppression",
+    "Hex: Undying"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=GQxYPbu3Z_8",
+    "date": "2026-11-12"
+   },
+   "video": {
+    "id": "GQxYPbu3Z_8",
+    "title": "I Created DBD's Most BRUTAL Skill Check Penalty",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "I Created DBD's Most BRUTAL Skill Check Penalty",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "Abusing The Perk Interaction EVERYONE Forgot About",
+   "role": "survivor",
+   "killer": null,
+   "perks": [
+    "Streetwise",
+    "Eyes of Belmont",
+    "Residual Manifest",
+    "Appraisal"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Seine",
+    "url": "https://www.youtube.com/watch?v=Dw8kxoZI7Q8",
+    "date": "2026-11-11"
+   },
+   "video": {
+    "id": "Dw8kxoZI7Q8",
+    "title": "Abusing The Perk Interaction EVERYONE Forgot About",
+    "channel": "Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "Abusing The Perk Interaction EVERYONE Forgot About",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "Basement Trapper",
+   "role": "killer",
+   "killer": "The Trapper",
+   "perks": [
+    "Agitation",
+    "Scourge Hook: Monstrous Shrine",
+    "Make your Choice",
+    "Hex: Crowd Control"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=pSZ7bWSINQw",
+    "date": "2026-11-09"
+   },
+   "video": {
+    "id": "pSZ7bWSINQw",
+    "title": "I Made DBD's Basement Completely INESCAPABLE",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "I Made DBD's Basement Completely INESCAPABLE",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "Basement Hag",
+   "role": "killer",
+   "killer": "The Hag",
+   "perks": [
+    "Agitation",
+    "Scourge Hook: Monstrous Shrine",
+    "Make your Choice",
+    "Save the best for last"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=pSZ7bWSINQw",
+    "date": "2026-11-09"
+   },
+   "video": {
+    "id": "pSZ7bWSINQw",
+    "title": "I Made DBD's Basement Completely INESCAPABLE",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "I Made DBD's Basement Completely INESCAPABLE",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "Basement Demogorgon",
+   "role": "killer",
+   "killer": "The Demogorgon",
+   "perks": [
+    "Agitation",
+    "Iron Grasp",
+    "Territorial Imperative",
+    "Make your Choice"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=pSZ7bWSINQw",
+    "date": "2026-11-09"
+   },
+   "video": {
+    "id": "pSZ7bWSINQw",
+    "title": "I Made DBD's Basement Completely INESCAPABLE",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "I Made DBD's Basement Completely INESCAPABLE",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "Basement Mastermind",
+   "role": "killer",
+   "killer": "The Mastermind",
+   "perks": [
+    "Agitation",
+    "Scourge Hook: Monstrous Shrine",
+    "Territorial Imperative",
+    "Hex: Crowd Control"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=pSZ7bWSINQw",
+    "date": "2026-11-09"
+   },
+   "video": {
+    "id": "pSZ7bWSINQw",
+    "title": "I Made DBD's Basement Completely INESCAPABLE",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "I Made DBD's Basement Completely INESCAPABLE",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "Abusing DBD's STRONGEST Survivor Perk That NOBODY Uses",
+   "role": "survivor",
+   "killer": null,
+   "perks": [
+    "Residual Manifest",
+    "Champion of Light",
+    "Blast Mine",
+    "Flashbang"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Seine",
+    "url": "https://www.youtube.com/watch?v=5UPKaKnBjA4",
+    "date": "2026-11-07"
+   },
+   "video": {
+    "id": "5UPKaKnBjA4",
+    "title": "Abusing DBD's STRONGEST Survivor Perk That NOBODY Uses",
+    "channel": "Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "Abusing DBD's STRONGEST Survivor Perk That NOBODY Uses",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "This Is The STRONGEST Killer Buff We Have EVER Seen (Game 1)",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Lethal Pursuer",
+    "Gearhead",
+    "A Nurse's Calling",
+    "Predator"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=7UwLDr0s8ko",
+    "date": "2026-11-06"
+   },
+   "video": {
+    "id": "7UwLDr0s8ko",
+    "title": "This Is The STRONGEST Killer Buff We Have EVER Seen",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "This Is The STRONGEST Killer Buff We Have EVER Seen",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "This Is The STRONGEST Killer Buff We Have EVER Seen (Game 2)",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Coulrophobia",
+    "A Nurse's Calling",
+    "Infectious Fright",
+    "Forced Hesitation"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=7UwLDr0s8ko",
+    "date": "2026-11-06"
+   },
+   "video": {
+    "id": "7UwLDr0s8ko",
+    "title": "This Is The STRONGEST Killer Buff We Have EVER Seen",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "This Is The STRONGEST Killer Buff We Have EVER Seen",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "This Is The STRONGEST Killer Buff We Have EVER Seen (Game 3)",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "A Nurse's Calling",
+    "Scourge Hook: Monstrous Shrine",
+    "Monitor & Abuse",
+    "Gearhead"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=7UwLDr0s8ko",
+    "date": "2026-11-06"
+   },
+   "video": {
+    "id": "7UwLDr0s8ko",
+    "title": "This Is The STRONGEST Killer Buff We Have EVER Seen",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "This Is The STRONGEST Killer Buff We Have EVER Seen",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "This Is The STRONGEST Killer Buff We Have EVER Seen (Game 4)",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Enduring",
+    "Spirit Fury",
+    "Knock Out",
+    "Dissolution"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=7UwLDr0s8ko",
+    "date": "2026-11-06"
+   },
+   "video": {
+    "id": "7UwLDr0s8ko",
+    "title": "This Is The STRONGEST Killer Buff We Have EVER Seen",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "This Is The STRONGEST Killer Buff We Have EVER Seen",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "This Is The STRONGEST Killer Buff We Have EVER Seen (Game 5)",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Deathbound",
+    "Gearhead",
+    "Tinkerer",
+    "Trail of Torment"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=7UwLDr0s8ko",
+    "date": "2026-11-06"
+   },
+   "video": {
+    "id": "7UwLDr0s8ko",
+    "title": "This Is The STRONGEST Killer Buff We Have EVER Seen",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "This Is The STRONGEST Killer Buff We Have EVER Seen",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "I Made Unhooking Survivors IMPOSSIBLE With Blindness",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Hex: The Third Seal",
+    "Hex: Undying",
+    "Make your Choice",
+    "Leverage"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=sXCPV5RCyF8",
+    "date": "2026-11-04"
+   },
+   "video": {
+    "id": "sXCPV5RCyF8",
+    "title": "I Made Unhooking Survivors IMPOSSIBLE With Blindness",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "I Made Unhooking Survivors IMPOSSIBLE With Blindness",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "This Underused Survivor Perk OBLITERATES Killer Players",
+   "role": "survivor",
+   "killer": null,
+   "perks": [
+    "Diversion",
+    "Fixated",
+    "Lightweight",
+    "Cross-Examination"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Seine",
+    "url": "https://www.youtube.com/watch?v=FotWqSNYcfg",
+    "date": "2026-11-03"
+   },
+   "video": {
+    "id": "FotWqSNYcfg",
+    "title": "This Underused Survivor Perk OBLITERATES Killer Players",
+    "channel": "Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "This Underused Survivor Perk OBLITERATES Killer Players",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "Chase Build",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Spirit Fury",
+    "Enduring",
+    "Celestial Witness",
+    "Save the best for last"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=rqaKPYMbiL4",
+    "date": "2026-10-27"
+   },
+   "video": {
+    "id": "rqaKPYMbiL4",
+    "title": "I Found The BEST Killer Build For EVERY Playstyle",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "I Found The BEST Killer Build For EVERY Playstyle",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "Anti-Heal Build",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Thanatophobia",
+    "Leverage",
+    "Sloppy Butcher",
+    "Hysteria"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=rqaKPYMbiL4",
+    "date": "2026-10-27"
+   },
+   "video": {
+    "id": "rqaKPYMbiL4",
+    "title": "I Found The BEST Killer Build For EVERY Playstyle",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "I Found The BEST Killer Build For EVERY Playstyle",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "Generator Build",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Scourge Hook: Pain Resonance",
+    "Undone",
+    "Turn Back The Clock",
+    "Grim Embrace"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=rqaKPYMbiL4",
+    "date": "2026-10-27"
+   },
+   "video": {
+    "id": "rqaKPYMbiL4",
+    "title": "I Found The BEST Killer Build For EVERY Playstyle",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "I Found The BEST Killer Build For EVERY Playstyle",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "Aura Build",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Celestial Witness",
+    "Nemesis",
+    "Predator",
+    "Lethal Pursuer"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=rqaKPYMbiL4",
+    "date": "2026-10-27"
+   },
+   "video": {
+    "id": "rqaKPYMbiL4",
+    "title": "I Found The BEST Killer Build For EVERY Playstyle",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "I Found The BEST Killer Build For EVERY Playstyle",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "Hooking Survivors Just Became Completely POINTLESS",
+   "role": "survivor",
+   "killer": null,
+   "perks": [
+    "Slippery Meat",
+    "Second Wind",
+    "Borrowed Time",
+    "Babysitter"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Seine",
+    "url": "https://www.youtube.com/watch?v=LuBl32p2qPc",
+    "date": "2026-10-25"
+   },
+   "video": {
+    "id": "LuBl32p2qPc",
+    "title": "Hooking Survivors Just Became Completely POINTLESS",
+    "channel": "Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "Hooking Survivors Just Became Completely POINTLESS",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "SCARING Survivors With Bubba's BEST Undetectable Build!",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Insidious",
+    "Unforeseen",
+    "Nowhere to Hide",
+    "Silent Shadow"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "chazz",
+    "url": "https://www.youtube.com/watch?v=6h3GLiDhgUE",
+    "date": "2026-10-24"
+   },
+   "video": {
+    "id": "6h3GLiDhgUE",
+    "title": "SCARING Survivors With Bubba's BEST Undetectable Build!",
+    "channel": "chazz"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "SCARING Survivors With Bubba's BEST Undetectable Build!",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "Gen Rushing",
+   "role": "survivor",
+   "killer": null,
+   "perks": [
+    "Boon: Illumination",
+    "Boon: Steadfast",
+    "Friendly Competition",
+    "Deja Vu"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Seine",
+    "url": "https://www.youtube.com/watch?v=8ioYof4uPr4",
+    "date": "2026-10-22"
+   },
+   "video": {
+    "id": "8ioYof4uPr4",
+    "title": "I Found The BEST Survivor Build For EVERY Playstyle",
+    "channel": "Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "I Found The BEST Survivor Build For EVERY Playstyle",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "Chase",
+   "role": "survivor",
+   "killer": null,
+   "perks": [
+    "Dead Hard",
+    "Finesse",
+    "Resilience",
+    "Dark Sense"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Seine",
+    "url": "https://www.youtube.com/watch?v=8ioYof4uPr4",
+    "date": "2026-10-22"
+   },
+   "video": {
+    "id": "8ioYof4uPr4",
+    "title": "I Found The BEST Survivor Build For EVERY Playstyle",
+    "channel": "Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "I Found The BEST Survivor Build For EVERY Playstyle",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "Distraction",
+   "role": "survivor",
+   "killer": null,
+   "perks": [
+    "Decisive Strike",
+    "Deception",
+    "Blast Mine",
+    "Red Herring"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Seine",
+    "url": "https://www.youtube.com/watch?v=8ioYof4uPr4",
+    "date": "2026-10-22"
+   },
+   "video": {
+    "id": "8ioYof4uPr4",
+    "title": "I Found The BEST Survivor Build For EVERY Playstyle",
+    "channel": "Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "I Found The BEST Survivor Build For EVERY Playstyle",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "Healing",
+   "role": "survivor",
+   "killer": null,
+   "perks": [
+    "Empathy",
+    "Empathic Connection",
+    "Better Than New",
+    "Botany Knowledge"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Seine",
+    "url": "https://www.youtube.com/watch?v=8ioYof4uPr4",
+    "date": "2026-10-22"
+   },
+   "video": {
+    "id": "8ioYof4uPr4",
+    "title": "I Found The BEST Survivor Build For EVERY Playstyle",
+    "channel": "Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "I Found The BEST Survivor Build For EVERY Playstyle",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "Wraith",
+   "role": "killer",
+   "killer": "The Wraith",
+   "perks": [
+    "Scourge Hook: Monstrous Shrine",
+    "Deadlock",
+    "Dying Light",
+    "Scourge Hook: Gift of Pain"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=KjKxLZCqeM4",
+    "date": "2026-10-21"
+   },
+   "video": {
+    "id": "KjKxLZCqeM4",
+    "title": "Is Being Free To Play in 2026 Actually THAT Bad?",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "Is Being Free To Play in 2026 Actually THAT Bad?",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "Trapper",
+   "role": "killer",
+   "killer": "The Trapper",
+   "perks": [
+    "Save the best for last",
+    "Sloppy Butcher",
+    "Scourge Hook: Monstrous Shrine",
+    "Deadlock"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=KjKxLZCqeM4",
+    "date": "2026-10-21"
+   },
+   "video": {
+    "id": "KjKxLZCqeM4",
+    "title": "Is Being Free To Play in 2026 Actually THAT Bad?",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "Is Being Free To Play in 2026 Actually THAT Bad?",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "Hillbilly",
+   "role": "killer",
+   "killer": "The Hillbilly",
+   "perks": [
+    "Enduring",
+    "Whispers",
+    "Brutal Strength",
+    "Distressing"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=KjKxLZCqeM4",
+    "date": "2026-10-21"
+   },
+   "video": {
+    "id": "KjKxLZCqeM4",
+    "title": "Is Being Free To Play in 2026 Actually THAT Bad?",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "Is Being Free To Play in 2026 Actually THAT Bad?",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "Nurse",
+   "role": "killer",
+   "killer": "The Nurse",
+   "perks": [
+    "Dying Light",
+    "Deadlock",
+    "Whispers",
+    "Agitation"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=KjKxLZCqeM4",
+    "date": "2026-10-21"
+   },
+   "video": {
+    "id": "KjKxLZCqeM4",
+    "title": "Is Being Free To Play in 2026 Actually THAT Bad?",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "Is Being Free To Play in 2026 Actually THAT Bad?",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "The NEW Survivor Build That BUFFS Your Teammates",
+   "role": "survivor",
+   "killer": null,
+   "perks": [
+    "Better Than New",
+    "Pharmacy",
+    "Quick Gambit",
+    "Friendly Competition"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Seine",
+    "url": "https://www.youtube.com/watch?v=31tlbO4nvr4",
+    "date": "2026-10-20"
+   },
+   "video": {
+    "id": "31tlbO4nvr4",
+    "title": "The NEW Survivor Build That BUFFS Your Teammates",
+    "channel": "Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "The NEW Survivor Build That BUFFS Your Teammates",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "The Pig",
+   "role": "killer",
+   "killer": "The Pig",
+   "perks": [
+    "Whispers",
+    "Hex: Devour Hope",
+    "Hex: Undying",
+    "Undone"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=2sSVkrsRAJM",
+    "date": "2026-10-18"
+   },
+   "video": {
+    "id": "2sSVkrsRAJM",
+    "title": "The BUFFED Killer Perk That Makes EVERY Killer Stronger",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "The BUFFED Killer Perk That Makes EVERY Killer Stronger",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "The Nurse",
+   "role": "killer",
+   "killer": "The Nurse",
+   "perks": [
+    "Whispers",
+    "Turn Back The Clock",
+    "Deadlock",
+    "Hex: Plaything"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=2sSVkrsRAJM",
+    "date": "2026-10-18"
+   },
+   "video": {
+    "id": "2sSVkrsRAJM",
+    "title": "The BUFFED Killer Perk That Makes EVERY Killer Stronger",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "The BUFFED Killer Perk That Makes EVERY Killer Stronger",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "The Oni",
+   "role": "killer",
+   "killer": "The Oni",
+   "perks": [
+    "Whispers",
+    "Languid Touch",
+    "Hex: Plaything",
+    "Bamboozle"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=2sSVkrsRAJM",
+    "date": "2026-10-18"
+   },
+   "video": {
+    "id": "2sSVkrsRAJM",
+    "title": "The BUFFED Killer Perk That Makes EVERY Killer Stronger",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "The BUFFED Killer Perk That Makes EVERY Killer Stronger",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "The Ghost Face",
+   "role": "killer",
+   "killer": "The Ghost Face",
+   "perks": [
+    "Whispers",
+    "Lay Waste",
+    "Brutal Strength",
+    "Surveillance"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=2sSVkrsRAJM",
+    "date": "2026-10-18"
+   },
+   "video": {
+    "id": "2sSVkrsRAJM",
+    "title": "The BUFFED Killer Perk That Makes EVERY Killer Stronger",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "The BUFFED Killer Perk That Makes EVERY Killer Stronger",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "Is BUFFED Road Life ACTUALLY Worth Running Now?",
+   "role": "survivor",
+   "killer": null,
+   "perks": [
+    "Road Life",
+    "For the People",
+    "Built to Last",
+    "Botany Knowledge"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Seine",
+    "url": "https://www.youtube.com/watch?v=BOnN8cGyo68",
+    "date": "2026-10-17"
+   },
+   "video": {
+    "id": "BOnN8cGyo68",
+    "title": "Is BUFFED Road Life ACTUALLY Worth Running Now?",
+    "channel": "Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "Is BUFFED Road Life ACTUALLY Worth Running Now?",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "Is DBD's NEWEST Gen Regression Perk ACTUALLY Good?",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Scourge Hook: Monstrous Shrine",
+    "Gearhead",
+    "Thrilling Tremors",
+    "Barbecue & Chili"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=wIXj376SDIk",
+    "date": "2026-10-16"
+   },
+   "video": {
+    "id": "wIXj376SDIk",
+    "title": "Is DBD's NEWEST Gen Regression Perk ACTUALLY Good?",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "Is DBD's NEWEST Gen Regression Perk ACTUALLY Good?",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "perks",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Hex: Ruin",
+    "Blood Warden",
+    "Distressing",
+    "Infectious Fright"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "blackoutraven",
+    "url": "https://www.youtube.com/watch?v=_5sfSZeUrto",
+    "date": "2026-10-15"
+   },
+   "video": {
+    "id": "_5sfSZeUrto",
+    "title": "This Slugging Build Is Insane on Krasue | Dead by Daylight",
+    "channel": "blackoutraven"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "This Slugging Build Is Insane on Krasue | Dead by Daylight",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "DBD's Most USELESS Survivor Perk Just Became META",
+   "role": "survivor",
+   "killer": null,
+   "perks": [
+    "Premonition",
+    "Eyes of Belmont",
+    "Fixated",
+    "Salvation's Cry"
+   ],
+   "categories": [
+    "creator",
+    "meta"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Seine",
+    "url": "https://www.youtube.com/watch?v=8AIpand5hII",
+    "date": "2026-10-14"
+   },
+   "video": {
+    "id": "8AIpand5hII",
+    "title": "DBD's Most USELESS Survivor Perk Just Became META",
+    "channel": "Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "DBD's Most USELESS Survivor Perk Just Became META",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "This REWORKED Perk Interaction Makes Hillbilly UNBEATABLE",
+   "role": "killer",
+   "killer": "The Hillbilly",
+   "perks": [
+    "Infectious Fright",
+    "Oppression",
+    "Undone",
+    "Insidious"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=7cNOTci8VxY",
+    "date": "2026-10-13"
+   },
+   "video": {
+    "id": "7cNOTci8VxY",
+    "title": "This REWORKED Perk Interaction Makes Hillbilly UNBEATABLE",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "This REWORKED Perk Interaction Makes Hillbilly UNBEATABLE",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "These REWORKED Perks Will INCREASE Your Escape Rate",
+   "role": "survivor",
+   "killer": null,
+   "perks": [
+    "Sole Survivor",
+    "Wake Up!",
+    "Finesse",
+    "Fruits of Your Labor"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Seine",
+    "url": "https://www.youtube.com/watch?v=IBrdZIN05cI",
+    "date": "2026-10-12"
+   },
+   "video": {
+    "id": "IBrdZIN05cI",
+    "title": "These REWORKED Perks Will INCREASE Your Escape Rate",
+    "channel": "Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "These REWORKED Perks Will INCREASE Your Escape Rate",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "perks",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Save the best for last",
+    "Hex: Hive Mind",
+    "Forever Entwined",
+    "Celestial Witness"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "blackoutraven",
+    "url": "https://www.youtube.com/watch?v=BBgJu1r4HsU",
+    "date": "2026-10-02"
+   },
+   "video": {
+    "id": "BBgJu1r4HsU",
+    "title": "4K Comeback With The Pig Was INSANE | Dead by Daylight",
+    "channel": "blackoutraven"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "4K Comeback With The Pig Was INSANE | Dead by Daylight",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "perks",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Gearhead",
+    "A Nurse's Calling",
+    "Lethal Pursuer",
+    "Barbecue & Chili"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "blackoutraven",
+    "url": "https://www.youtube.com/watch?v=qfNwgQYZcqE",
+    "date": "2026-09-11"
+   },
+   "video": {
+    "id": "qfNwgQYZcqE",
+    "title": "This Artist Build Made Them Think I Was Cheating | Dead by Daylight",
+    "channel": "blackoutraven"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "This Artist Build Made Them Think I Was Cheating | Dead by Daylight",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "perks",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Lethal Pursuer",
+    "Deerstalker",
+    "Call of Brine",
+    "Oppression"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "blackoutraven",
+    "url": "https://www.youtube.com/watch?v=GRxWpOQXIqU",
+    "date": "2026-09-03"
+   },
+   "video": {
+    "id": "GRxWpOQXIqU",
+    "title": "This Is My BEST Match on The Judgment | Dead by Daylight",
+    "channel": "blackoutraven"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "This Is My BEST Match on The Judgment | Dead by Daylight",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "perks",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Celestial Witness",
+    "Nemesis",
+    "A Nurse's Calling",
+    "Hex: No One Escapes Death"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "blackoutraven",
+    "url": "https://www.youtube.com/watch?v=5PwOUAyetV4",
+    "date": "2026-08-30"
+   },
+   "video": {
+    "id": "5PwOUAyetV4",
+    "title": "The Judgment Glitched and BROKE the Map | Dead by Daylight",
+    "channel": "blackoutraven"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "The Judgment Glitched and BROKE the Map | Dead by Daylight",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "perks",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Trail of Torment",
+    "Weave Attunement",
+    "Thanatophobia",
+    "Surveillance"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "blackoutraven",
+    "url": "https://www.youtube.com/watch?v=hyGznPUZ42k",
+    "date": "2026-01-15"
+   },
+   "video": {
+    "id": "hyGznPUZ42k",
+    "title": "I Got an Iridescent Add-On in Chaos Shuffle (Lich Gameplay) | Dead by Daylight",
+    "channel": "blackoutraven"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "I Got an Iridescent Add-On in Chaos Shuffle (Lich Gameplay) | Dead by Daylight",
+    "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "perks",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Brutal Strength",
+    "Bamboozle",
+    "Enduring",
+    "Dissolution"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "blackoutraven",
+    "url": "https://www.youtube.com/watch?v=dKVGuPWbmkc",
+    "date": "2026-01-05"
+   },
+   "video": {
+    "id": "dKVGuPWbmkc",
+    "title": "Legion Vs Sprint Burst Squad | Dead by Daylight",
+    "channel": "blackoutraven"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "Legion Vs Sprint Burst Squad | Dead by Daylight",
+    "found": "2026-11-17"
+   }
+  }
+ ]
+}

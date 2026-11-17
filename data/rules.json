@@ -1,0 +1,708 @@
+{
+ "patchChecked": "10.2.2b",
+ "checkedOn": "2026-11-17",
+ "dr": {
+  "steps": [
+   1.0,
+   0.5,
+   0.25,
+   0.125,
+   0.05
+  ],
+  "introducedIn": "9.6.0",
+  "includes": [
+   "Perks",
+   "Items",
+   "Powers",
+   "Offerings"
+  ],
+  "excludes": [
+   "Add-ons"
+  ],
+  "roleScoped": [
+   "negative action speed modifiers",
+   "positive skill check chance modifiers"
+  ],
+  "source": "https://forums.bhvr.com/dead-by-daylight/kb/articles/544-9-6-0-patch-notes"
+ },
+ "constants": {
+  "survivorSpeed": 4.0,
+  "killerSpeed": 4.6,
+  "charges": {
+   "repair": {
+    "seconds": 90,
+    "label": "Repairing one generator alone"
+   },
+   "heal": {
+    "seconds": 16,
+    "label": "Healing one health state"
+   },
+   "gates": {
+    "seconds": 20,
+    "label": "Opening an Exit Gate"
+   },
+   "cleanse": {
+    "seconds": 14,
+    "label": "Cleansing a Totem"
+   },
+   "bless": {
+    "seconds": 14,
+    "label": "Blessing a Dull Totem"
+   },
+   "chest": {
+    "seconds": 8,
+    "label": "Unlocking a Chest"
+   },
+   "sabotage": {
+    "seconds": 3,
+    "label": "Sabotaging a Hook"
+   },
+   "kick": {
+    "seconds": 1.8,
+    "label": "Damaging a generator"
+   },
+   "break": {
+    "seconds": 2.34,
+    "label": "Breaking a Pallet"
+   }
+  },
+  "regression": {
+   "maxEvents": 8,
+   "kickPct": 5,
+   "generatorCharges": 90
+  }
+ },
+ "rules": [
+  {
+   "id": "diminishing-returns",
+   "title": "Diminishing Returns system (global stacking rule since 9.6.0)",
+   "rule": "Since Patch 9.6.0 every repeated modifier of the SAME kind acting on a player in a Trial is ranked by absolute value; the largest is applied at 100%, the 2nd at 50%, the 3rd at 25%, the 4th at 12.5%, the 5th and every later one at 5% of its original value. It covers modifiers granted by Perks, Items, Powers and Offerings for both roles. Modifiers granted by Add-ons are excluded entirely (they keep 100%). Negative action-speed modifiers and positive skill-check-chance modifiers only diminish against other modifiers from the same role (a Survivor's self-inflicted penalty is not ranked against a Killer-inflicted penalty). 'Same kind' means the identical effect (e.g. 'healing speed'), not a family of effects. The in-game Game Manual (updated 9.6.1) lists the affected stats; a player transcript of that list is: Action Speeds: Repair, Heal, Mend, Recover, Vault, Break, Pick up Survivor, Drop Survivor, Wiggle, Hook Survivor, Unhook Survivor, Sabotage Hook, Search Locker, Reload at Locker, Cleanse Totem, Bless Totem, Invocation, Unlock Chest, Rummage Chest, Open Exit Gate, Unlock Hatch. Modifiers: Movement Speed, Haste Strength, Hindered Strength, Status Effect Recovery, Fall Stagger Recovery, Footstep Volume, Breathing Volume, Grunts of Pain Volume, Pools of Blood Frequency, Scratch Mark Duration, Wiggle Strength, Terror Radius Size, Basic Attack Cooldown, Lunge Attack Distance, Stun Recovery Speed, Skill Check Bonus/Chance/Speed/Difficulty/Penalty, Generator Explosion Progress Regression, Generator Progress Regression Speed, Luck. Aura range/duration is NOT in that list.",
+   "detail": null,
+   "confidence": "high",
+   "changedIn": "9.6.0",
+   "caveats": "Weights, sources and exclusions are from official BHVR patch notes (high). The list of affected stats is a player's transcript of the in-game manual posted on Steam on 7 Jun 2026 (community source, medium); the 'same effect, not same family' statement is from a Steam account named rblanchard_bhvr (BHVR staff tag not independently verified). PTB vs live wording differs: the 9.6.0 PTB notes said modifiers 'from Killer Power and Survivor Item add-ons' are excluded; the live notes list Powers as INCLUDED and exclude 'Modifiers granted from Add-ons'. The wiki Maths page sentence is ambiguous between the two readings; the live patch notes are newer/authoritative. Not verified: whether an excluded add-on modifier still occupies a rank slot; whether base-kit game effects (e.g. the +10% unhook Haste, co-op repair penalty) are ranked; whether positive and negative modifiers of one stat share one ranking (the worked examples in the notes only show same-sign cases). No changes to the DR system were found in the 9.6.1-10.2.2b notes or the 10.3.0 PTB notes (keyword search for 'diminish'/'stack').",
+   "sources": [
+    {
+     "url": "https://forums.bhvr.com/dead-by-daylight/kb/articles/544-9-6-0-patch-notes",
+     "quote": "While in a Trial, repeated positive or negative gameplay modifiers and status effects are now affected by diminishing returns."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Template%3APatch_9.6.0",
+     "quote": "**** Modifiers granted from {{#Invoke:Utils|IconLink|Add-ons}}"
+    },
+    {
+     "url": "https://forums.bhvr.com/dead-by-daylight/kb/articles/542-9-6-0-ptb-patch-notes",
+     "quote": "All major gameplay modifiers and status effects for both roles are included in this update."
+    }
+   ]
+  },
+  {
+   "id": "haste",
+   "title": "Haste stacking",
+   "rule": "Multiple Haste sources stack additively (their percentages are summed into one cumulative Haste value shown on the icon); it is NOT 'strongest only'. A 'largest value only' rule was tested on the 8.7.0 PTB and reverted before 8.7.0 went live. Since 9.6.0 the summed values are subject to Diminishing Returns (100/50/25/12.5/5% by rank; add-on Haste excluded). No numeric Haste cap is documented.",
+   "detail": null,
+   "confidence": "high",
+   "changedIn": "9.6.0 (DR); 8.7.0 PTB 'largest only' rule was reverted in 8.7.0 live",
+   "caveats": "Additive stacking + DR is high confidence. The wiki Haste page itself has not been edited to mention DR (its change log stops at 8.7.0) but does not contradict it. Whether the base-kit +10% unhook Haste takes a rank slot is unverified (a Steam user complains Babysitter is affected, which suggests it does).",
+   "sources": [
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Status_HUD/Haste",
+     "quote": "The strength of the effect depends on the specific Unlockable and can be stacked when applied from multiple '''''Haste''''' sources."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Template%3APatch_8.7.0_%28PTB%29",
+     "quote": "** The effects of Haste and Hindered no longer stack with themselves."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Template%3APatch_8.7.0",
+     "quote": "**Reverted the changes to Haste and Hindered stacking. Multiple sources of Haste and Hindered can stack once again."
+    }
+   ]
+  },
+  {
+   "id": "hindered",
+   "title": "Hindered stacking",
+   "rule": "Multiple Hindered sources stack with each other and with every other movement-speed effect (additively, as percentages of base speed). Default strength is -3% when an effect gives no number. Same history as Haste: 'largest only' on 8.7.0 PTB, reverted for live; Diminishing Returns applies since 9.6.0 ('Hindered Strength' is in the manual list). No cap documented.",
+   "detail": null,
+   "confidence": "high",
+   "changedIn": "9.6.0 (DR)",
+   "caveats": "A single source re-applied does not stack with itself (see the 9.2.0 bug fix); distinct sources do.",
+   "sources": [
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Status_HUD/Hindered",
+     "quote": "'''''Hindered''''' is stack-able with all other effects influencing Movement speed, including multiple instances of itself."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Template%3APatch_8.7.0",
+     "quote": "**Reverted the changes to Haste and Hindered stacking. Multiple sources of Haste and Hindered can stack once again."
+    },
+    {
+     "url": "https://steamcommunity.com/app/381210/discussions/0/801220136404188507/",
+     "quote": "- Hindered Strength"
+    }
+   ]
+  },
+  {
+   "id": "movement-speed-combination",
+   "title": "How Haste / Hindered combine with base speed and each other",
+   "rule": "Haste and Hindered are percentages of the BASE speed of the current locomotion type and are added to the speed multiplier (not compounded with each other). Survivor: base run 4.0 m/s; +5% Haste -> x1.05 = 4.2 m/s; the on-hit sprint (x1.65 for 1.8 s) adds too: +5% -> x1.70, -50% Hindered -> x1.15. Killer: base 4.4 or 4.6 m/s (Nurse 3.85); +5% Haste -> 4.83 m/s on a 4.6 killer; during a lunge the Haste multiplier is applied on top of the lunge multiplier (x1.05 * x1.5). Haste and Hindered are separate DR categories (Haste Strength / Hindered Strength); the wiki gives no explicit Haste-vs-Hindered netting formula, but both are added to the same base multiplier, so net = +Haste_total - Hindered_total.",
+   "detail": null,
+   "confidence": "medium",
+   "changedIn": null,
+   "caveats": "The additive-to-base behaviour is read off the wiki's datamined speed tables (survivor on-hit sprint rows; killer walking rows). A direct statement 'Haste% minus Hindered%' was not found on any fetched page, so the netting formula is an inference (medium). A Steam user states Haste and Hindered 'do not affect each other' for DR purposes (community, unverified).",
+   "sources": [
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Movement_Speeds",
+     "quote": "share the same base (running) '''Movement Speed''' amongst each other of '''{{#Invoke:Utils|clr|2|4.0 m/s}}'''."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Status_HUD/Hindered",
+     "quote": "'''''Hindered''''' is stack-able with all other effects influencing Movement speed, including multiple instances of itself."
+    }
+   ]
+  },
+  {
+   "id": "bloodlust",
+   "title": "Bloodlust",
+   "rule": "Bloodlust is a tiered Killer-only status effect that adds a FLAT +0.2 m/s per tier (not a percentage): tier I at 15 s of chase, II at 25 s, III at 35 s -> +0.2/+0.4/+0.6 m/s. It is lost when the Killer breaks a pallet, hits a Survivor or uses their Power. How the flat bonus combines with Haste % (before/after the multiplier) is not documented on the wiki.",
+   "detail": null,
+   "confidence": "high",
+   "changedIn": null,
+   "caveats": "Interaction order with Haste (flat-then-percent or percent-then-flat) and whether Bloodlust is in the DR 'Movement Speed' category: NOT verified.",
+   "sources": [
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Status_HUD/Bloodlust",
+     "quote": "Each Tier provides the Killer with a stack-able boost to their Movement speed of {{#Invoke:Utils|clror|+0.2 m/s}}."
+    }
+   ]
+  },
+  {
+   "id": "killer-power-speeds",
+   "title": "Killer power movement speeds (example: The Legion's Feral Frenzy)",
+   "rule": "Power speeds are separately defined speeds or flat m/s offsets on the Killer's base speed, not Haste. Legion: Feral Frenzy = base 4.6 + 0.6 = 5.2 m/s; each Feral Slash adds a further flat bonus (table: 5.44 / 5.68 / 5.92 / 6.16 m/s after slashes I-IV, i.e. +0.24 m/s each). Add-ons that grant Haste (e.g. BFFs +6%) are applied as a Haste multiplier and, being add-ons, are exempt from DR. The wiki does not tabulate perk Haste on top of Frenzy speed.",
+   "detail": null,
+   "confidence": "medium",
+   "changedIn": null,
+   "caveats": "Conflict inside the wiki: the Movement Speeds change log says +0.2 m/s per Feral Slash, the Legion sub-page table shows +0.24 m/s steps (5.2 -> 5.44 -> 5.68...). The table is the more detailed/current data. Whether perk Haste multiplies base 4.6 or the 5.2 Frenzy speed is NOT verified.",
+   "sources": [
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Movement_Speeds/The_Legion",
+     "quote": "| +0.6 m/s (1)"
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Movement_Speeds",
+     "quote": "Any alternate '''Movement Speeds''' either come in the form of a completely separate, newly defined '''Movement Speed''', or a multiplier applied to an already defined '''Movement Speed'''."
+    }
+   ]
+  },
+  {
+   "id": "action-speed-formula",
+   "title": "Action speed: combining bonuses and penalties",
+   "rule": "Every interaction has a charge requirement and a default action speed of 1.0 charge/second. Positive speed modifiers are ADDED together; negative modifiers are MULTIPLIED together (each as 1 - penalty), so speed can never reach 0. Time = charges / speed. Since 9.6.0, before combining, repeated same-kind modifiers from perks/items/powers/offerings are scaled by the DR weights (negative action-speed modifiers are ranked only against negatives from the same role; add-ons are not scaled).",
+   "detail": null,
+   "confidence": "high",
+   "changedIn": "9.6.0 (DR added on top of the additive/multiplicative rule)",
+   "caveats": "Additive-positive / multiplicative-negative and time = charges/speed are stated explicitly (high). The exact order 'apply DR weight to each value, then sum positives / multiply negatives' is the natural reading of 'lowered to a percentage of their original value' but no page shows a combined worked example (medium). The wiki's worked examples on the Maths page predate DR and do not apply it.",
+   "sources": [
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Dead_by_Daylight_Maths",
+     "quote": "positive modifiers are additive, whereas negative ones are multiplicative."
+    },
+    {
+     "url": "https://forums.bhvr.com/dead-by-daylight/kb/articles/544-9-6-0-patch-notes",
+     "quote": "On 9.6.0 PTB, for example, the self-inflicted 30% cleansing speed penalty from the Survivor Perk Calm Spirit was being reduced by 50% when calculated against the starting 60% cleansing speed penalty from the Killer Perk Hex: Thrill of the Hunt."
+    }
+   ]
+  },
+  {
+   "id": "action-base-values",
+   "title": "Base charges / times of common interactions",
+   "rule": "Verified current base values: Generator repair 90 charges (90 s solo at 1 c/s). Healing one Health State 16 charges (16 s altruistic). Mending: 10 s self, 6 s altruistic. Dying-state self-recovery: 50% of normal healing speed, up to 95% (30.4 s). Exit Gate 20 s. Totem cleanse 14 s; bless 14 s on a Dull Totem, 28 s on a Hex Totem (-50% speed). Chest unlock/rummage 8 charges (8 s). Unhook 1 s; self-unhook attempt 1.5 s. Hook sabotage 3 s (toolbox drains 2 c/s -> 6 charges). Wiggle 16 charges at 1 c/s (16 s). Killer: damage generator 1.8 s; break pallet 2.34 s; window vault 1.7 s; snuff boon / rekindle totem 1 s. Survivor window vaults: fast 0.5 s, medium 0.9 s, slow 1.5 s.",
+   "detail": null,
+   "confidence": "high",
+   "changedIn": "8.6.0 (mend times 12/8 s -> 10/6 s); others unchanged in 8.x-10.x",
+   "caveats": "The 'Windows' page is saved as wiki_Vaulting.txt, the 'Wiggle' page as wiki_Wiggling.txt (redirect names). Breakable-wall break time was not extracted.",
+   "sources": [
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Generators",
+     "quote": "By default, '''Generators''' require {{#Invoke:Utils|clror|90 Charges}} in order to become fully repaired."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Health_States",
+     "quote": "It takes {{#Invoke:Utils|clror|16 Charges}} to heal a Survivors for the equivalent of {{#Invoke:Utils|clro|1 Health State}}."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Exit_Gates",
+     "quote": "It takes Survivors {{#Invoke:Utils|clror|20 seconds}} to open an '''Exit Gate'''."
+    }
+   ]
+  },
+  {
+   "id": "action-speed-caps",
+   "title": "Caps on action speed",
+   "rule": "No general minimum/maximum action-speed cap is documented. The only floors/ceilings found: (a) penalties multiply, so speed can never reach 0; (b) Killer pick-up speed bonus is hard-capped at +42% (8.6.0); (c) Diminishing Returns (9.6.0) acts as a soft cap on every stacked stat. The wiki's Health States page still says there is no healing speed cap - true as 'no hard cap', but stacked healing bonuses are now diminished.",
+   "detail": null,
+   "confidence": "medium",
+   "changedIn": "8.6.0 (pick-up cap); 9.6.0 (DR soft cap)",
+   "caveats": "The belief that a global min/max action-speed cap exists could NOT be confirmed on any fetched page. The Health States sentence predates 9.6.0 and conflicts in spirit with DR (the 9.6.0 patch notes are newer). Per-perk caps exist in perk text (e.g. Prove Thyself 'up to a maximum of 18/24/30 %').",
+   "sources": [
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Template%3APatch_8.6.0",
+     "quote": "** Capped the \"pick-up\" speed buff at +42% for Killers. This was done to prevent breaking certain Killer/Survivor interactions."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Dead_by_Daylight_Maths",
+     "quote": "The latter is done so that an Action speed can never reach '''0 %''', making an action incompletable, and stacked effects have diminishing returns."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Health_States",
+     "quote": "There is no healing speed cap, allowing players to stack as many healing perks as they want."
+    }
+   ]
+  },
+  {
+   "id": "coop-repair",
+   "title": "Co-op generator repair efficiency penalty",
+   "rule": "When 2+ Survivors repair the same generator each one's individual repair speed gets a -15% efficiency penalty per ADDITIONAL Survivor: 2 -> 85% each (1.7 c/s total, ~52.94 s), 3 -> 70% each (2.1 c/s, ~42.86 s), 4 -> 55% each (2.2 c/s, ~40.91 s). Prove Thyself gives +6/8/10% repair speed per other Survivor within 4 m (max 18/24/30%) and a Survivor can only be affected by one instance of it. Repair-requirement reductions (Specialist, Invocation: Weaving Spiders, Brand New Part) stack with each other.",
+   "detail": null,
+   "confidence": "high",
+   "changedIn": null,
+   "caveats": "The prose says 'for each repairing Survivor' but the table makes clear it is -15% per additional Survivor (0% solo). Whether the co-op penalty is multiplied (as a negative modifier) or subtracted additively when perk bonuses are present is not shown explicitly; by the Maths-page rule negatives multiply: speed = (1 + bonuses) * (1 - 0.15*(n-1)). Whether this base-kit penalty takes part in DR ranking is NOT verified.",
+   "sources": [
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Generators",
+     "quote": "the game applies a stack-able {{#Invoke:Utils|clro|-15 %}} Efficiency penalty for each repairing Survivor to their individual Repair speed."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Prove_Thyself",
+     "quote": "Increases the Repair speed by a stack-able 6/8/10 % per other Survivor within 4 metres of your location, up to a maximum of 18/24/30 %."
+    }
+   ]
+  },
+  {
+   "id": "healing-rules",
+   "title": "Healing: co-op, self-heal, Mangled",
+   "rule": "One Health State = 16 charges. Each healer contributes 1 c/s; two Survivors healing a third give 2 c/s combined (no co-op efficiency penalty for healing; co-op MENDING has -25%). Self-heal with a Med-Kit: -33.333% speed (0.667 c/s, ~24 s) and -33.333% item efficiency. Self-Care (no Med-Kit): 25/30/35% of normal healing speed. Mangled: -20% healing speed on the affected Survivor (= +25% time). Positive healing bonuses add, penalties multiply, and stacked same-kind bonuses are subject to DR since 9.6.0.",
+   "detail": null,
+   "confidence": "high",
+   "changedIn": "9.6.0 (DR on stacked healing bonuses)",
+   "caveats": "Base numbers high confidence. Whether the Med-Kit's own speed bonus and the self-heal penalty count as DR-ranked modifiers (Items are included in DR; base-kit penalties unknown) is medium/unverified.",
+   "sources": [
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Health_States",
+     "quote": "Survivors have an individual default Healing speed of {{#Invoke:Utils|clro|+1 c/s}}, which is doubled to a combined {{#Invoke:Utils|clro|+2 c/s}} if two Survivors heal a third Survivor together, halving the Healing time."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Med-Kits",
+     "quote": "Personal Healing is afflicted by a Healing Speed and Item Efficiency penalty of '''{{#Invoke:Utils|clr|6|-33.333 %}}''' each."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Self-Care",
+     "quote": "* Grants the ability to self-heal without needing a Med-Kit at 25/30/35 % of the regular Healing speed."
+    }
+   ]
+  },
+  {
+   "id": "toolbox-medkit-with-perks",
+   "title": "Toolbox / Med-Kit bonuses together with perk bonuses",
+   "rule": "Item speed bonuses are ordinary positive action-speed modifiers and add to perk bonuses, but since 9.6.0 Items are a DR source: an item bonus and perk bonuses of the same kind are ranked together (largest 100%, next 50%, ...). Item ADD-ON bonuses are exempt and always count in full. A toolbox drains charges at the same rate as its repair bonus (+50% -> -1.5 c/s) and each charge spent is a charge of repair; item efficiency uses the same additive/multiplicative maths as speed (wiki example: 16 / ((1 + 0.25) * (1 - 0.33)) = 19.1 charges for a self-heal with Streetwise).",
+   "detail": null,
+   "confidence": "medium",
+   "changedIn": "9.6.0",
+   "caveats": "That Items are DR sources and add-ons are exempt is official (high). No fetched page gives a worked toolbox+perk example after 9.6.0; a PCGamesN article (https://www.pcgamesn.com/dead-by-daylight/diminishing-returns-update) describes Toolbox 50% kept in full, Prove Thyself halved, add-on unaffected, but it was only read through a summariser so it is not quoted here. Whether item EFFICIENCY modifiers are DR'd is not in the manual list (unverified).",
+   "sources": [
+    {
+     "url": "https://forums.bhvr.com/dead-by-daylight/kb/articles/544-9-6-0-patch-notes",
+     "quote": "Identical Killer and Survivor modifiers granted by Powers, Items, Perks and Offerings will now be reduced progressively as they become stacked."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Template%3APatch_9.6.0",
+     "quote": "**** Modifiers granted from {{#Invoke:Utils|IconLink|Add-ons}}"
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Toolboxes",
+     "quote": "the '''Toolbox''' transfers its Charges into the Generator at the same rate as it increases the Repair speed for, a unique behaviour amongst Items."
+    }
+   ]
+  },
+  {
+   "id": "generator-regression-base",
+   "title": "Generator regression: base rate, kick, stopping it",
+   "rule": "A damaged generator regresses at 0.25 charges/s (100% regression speed; ~360 s from full) until Survivors repair it for 5% (4.5 charges), which stops regression. A manual kick takes 1.8 s and instantly removes 5% of TOTAL progress (4.5 charges of 90) then starts regression. A failed repair skill check removes 10% and blocks progress for 3 s; a Great skill check adds 1%. Killers cannot kick a generator that is already regressing (perks can still hit it).",
+   "detail": null,
+   "confidence": "high",
+   "changedIn": "7.5.0 (kick 2.5% -> 5%, 5% repair to stop regression) - still current",
+   "caveats": null,
+   "sources": [
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Generators",
+     "quote": "at a rate of {{#Invoke:Utils|clror|-0.25 c/s}}, and does so until it has lost all of its accumulated Progression and is reset back to zero."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Template%3APatch_7.5.0",
+     "quote": "***Killer kick regression is increased from 2.5% to 5%."
+    }
+   ]
+  },
+  {
+   "id": "regression-events",
+   "title": "Regression Event limit (8 per generator)",
+   "rule": "Each explosion is a separate event and takes its full amount, but a generator can only suffer 8 regression events in a trial — after that nothing regresses it. These perks all draw on that same budget.",
+   "detail": "Each generator can suffer at most 8 Regression Events; after that the Killer can no longer regress it by any means (kicks, add-ons, perks). A Regression Event = the Killer making the generator instantly lose at least 2.5% of its total progress, by a kick or by a perk/unlockable. The event is counted even if the generator has less progress than that to lose. Failed Survivor skill checks do not count and still regress. Counting per perk (from perk pages): a kick with Pop Goes the Weasel = 1 event; Overcharge = only the kick counts, not the skill check; instant-loss perks (Surge, Scourge Hook: Pain Resonance, Eruption, Turn Back the Clock, Undone, Pop, Overcharge's extra %) each cause an instant loss >= 2.5% and so count; perks that only start or speed up passive regression (Hex: Ruin, Call of Brine's speed, Oppression's extra generators, Lay Waste, Scourge Hook: Monstrous Shrine) do not themselves remove >= 2.5% instantly, but they stop working on a generator that has reached the limit.",
+   "confidence": "high",
+   "changedIn": "7.5.0 (introduced) - unchanged through 10.2.2b",
+   "caveats": "The 8-event limit and the 2.5% definition are high confidence. The per-perk 'counts / does not count' split for Ruin, Call of Brine, Oppression, Lay Waste, Monstrous Shrine, Turn Back the Clock and Undone is INFERRED from the definition (instant loss >= 2.5%); only Pop, Overcharge, Surge, Pain Resonance and Eruption have explicit notes on their wiki pages. The 7.5.0 notes list Hex: Ruin, Surge, Pain Resonance, Oppression and Overcharge as 'Perks Affected' without saying how each is counted.",
+   "sources": [
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Generators",
+     "quote": "Each '''Generator''' has a limit of {{#Invoke:Utils|clro|8 times}} that it can experience a Regression Event."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Template%3APatch_7.5.0",
+     "quote": "***Each Generator can only suffer 8 regression events maximum."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Pop_Goes_the_Weasel",
+     "quote": "each instance of using Pop Goes the Weasel on a Generator only adds +1 towards its Regression Events counter"
+    }
+   ]
+  },
+  {
+   "id": "regression-perk-basis",
+   "title": "Instant regression perks: % of TOTAL vs CURRENT progress (current values)",
+   "rule": "All current instant-regression perks are based on the generator's TOTAL progress (90 charges), none on current progress: kick 5%; Pop Goes the Weasel adds +15% to the kick = 20% total-based (was 20% of CURRENT until 9.5.0); Scourge Hook: Pain Resonance 10/15/20% of total (4 tokens, most-progressed generator, first hook of each Survivor on a Scourge Hook); Eruption 10% of total; Overcharge +2/3/4% of maximum progress on top of the kick; Undone 10% of total per token (max 10/20/30%); Surge 6/7/8% (page gives no basis word; gens within 32 m on a basic-attack down); Turn Back the Clock 10% (page gives no basis word; 20 m, 40/50/60 s after a hook).",
+   "detail": null,
+   "confidence": "high",
+   "changedIn": "9.5.0 (Pop: current -> total); 8.0.0 (Pain Resonance 15/20/25 -> 10/15/20); 10.2.0 (Undone rework)",
+   "caveats": "Values are the wiki's current perk descriptions (rendered from its data module on 2026-11-17). Surge and Turn Back the Clock do not state 'total' explicitly (medium for those two). Stacking several kick-modifying perks on ONE kick (Pop +15%, Overcharge +2/3/4%, Undone): the manual list transcript contains 'Generator Explosion Progress Regression', which suggests these bonuses are DR-ranked against each other, but a Steam user claims 'gen regression perks are untouched' - conflicting community statements, NOT verified.",
+   "sources": [
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Pop_Goes_the_Weasel",
+     "quote": "* Increases the regression amount by +15 % resulting in 20 % regression."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Template%3APatch_9.5.0",
+     "quote": "it explodes and loses 15% more progress (was 20% current progress, now total progress-only)."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Scourge_Hook%3A_Pain_Resonance",
+     "quote": "* Instantly regresses the Damaged Generator by 10/15/20 % of its total Progression."
+    }
+   ]
+  },
+  {
+   "id": "regression-speed-modifiers",
+   "title": "Passive regression speed modifiers",
+   "rule": "Perks that change the passive regression rate (base 0.25 c/s = 100%): Hex: Ruin 100/125/150% on all generators not being repaired; Call of Brine 130/140/150% for 90 s on a kicked generator; Overcharge ramps 85% -> 130% over 30 s; Scourge Hook: Monstrous Shrine 150/175/200% on all generators while the Killer is > 24 m from a Survivor hooked on a Scourge Hook; Lay Waste +2% per charge the generator has. 'Generator Progress Regression Speed' appears in the DR list, so several of these on the same generator are expected to be diminished rather than fully added; the wiki gives no combined formula.",
+   "detail": null,
+   "confidence": "low",
+   "changedIn": "9.2.0 (Ruin 50/75/100 -> 100/125/150); 10.1.0 (Call of Brine); 10.2.0 (Monstrous Shrine rework)",
+   "caveats": "Single-perk values are high confidence; how two or more regression-speed perks combine on one generator (additive bonus, max, or DR-weighted) is NOT documented on any fetched page - treat any formula as an assumption.",
+   "sources": [
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Hex%3A_Ruin",
+     "quote": "* Causes them to automatically regress at 100/125/150 % of the default Regression rate."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Call_of_Brine",
+     "quote": "* Increases its Regression speed to 130/140/150 % of the default value."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Overcharge",
+     "quote": "* Increases the Regression speed from 85 % to 130 % of its default value over the next 30 seconds."
+    }
+   ]
+  },
+  {
+   "id": "exhaustion",
+   "title": "Exhaustion perks",
+   "rule": "Exhausted is a shared cooldown: while you are Exhausted none of your Exhaustion perks can trigger, so several of them give you alternative triggers, not extra uses.",
+   "detail": "Exhausted is a shared cool-down: while a Survivor is Exhausted none of their Exhaustion perks can trigger (each perk says 'cannot be used while Exhausted' and then 'causes the Exhausted Status Effect' for 60/50/40 s). So only one Exhaustion perk can fire per Exhausted period; equipping several gives alternative triggers, not extra uses. Exhausted only recovers while not running, and is removed on being hooked. Exception: Adrenaline applies Exhausted but ignores it when activating. Vigil makes Exhausted recover 20/25/30% faster (only one Vigil instance applies; since 10.1.2 it affects Exhausted only).",
+   "confidence": "high",
+   "changedIn": "10.1.0-10.1.2 (Vigil nerfs only; the Exhaustion rule itself is unchanged)",
+   "caveats": "Vigil history per the wiki: 10.1.0 43/55/66 -> 30/35/40 %, 10.1.1 -> 20/25/30 %, 10.1.2 restricted to Exhausted only. 'Status Effect Recovery' is a DR category, so Vigil plus another recovery-speed source would be diminished.",
+   "sources": [
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Status_HUD/Exhausted",
+     "quote": "Survivors suffering from '''''Exhausted''''' are unable to use any of the numerous [[Exhaustion Perks]] (with some specific exceptions).<br>For these '''Perks''', '''''Exhausted''''' acts as a universal cool-down."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Sprint_Burst",
+     "quote": "Sprint Burst cannot be used while Exhausted."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Exhaustion_Perks",
+     "quote": "The mechanic intends to prevent Survivors from chaining multiple sprint-inducing Perks together in quick succession"
+    }
+   ]
+  },
+  {
+   "id": "status-effect-timers",
+   "title": "Binary / timed status effects with several sources",
+   "rule": "Non-numeric status effects (Exposed, Undetectable, Oblivious, Blindness, Broken, Incapacitated, Mangled, Haemorrhage, Exhausted, Endurance, Deep Wound, Cursed, Blessed) are on/off: a second source does not make the effect stronger. For timed effects the LONGEST remaining timer wins: a new application with a longer timer replaces the current one, a shorter one is ignored (timers neither add up nor always reset). Only Bloodlust and Madness are tiered; only Haste and Hindered have a stackable numeric strength.",
+   "detail": null,
+   "confidence": "medium",
+   "changedIn": "2.5.0 (longest-timer rule) - still described as current behaviour",
+   "caveats": "The longest-timer rule comes from the wiki's record of Patch 2.5.0 and the general sentence on the Status HUD page; no newer patch note contradicting it was found in 8.x-10.x, but it was not re-confirmed by a recent official source (medium). 9.6.0 says 'status effects are now affected by diminishing returns' - in practice that concerns the numeric ones (Haste/Hindered strength, status-effect recovery); binary effects have no strength to diminish.",
+   "sources": [
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Status_HUD",
+     "quote": "'''Status Effects''' that are on a timer may have their timer refreshed by a new application of the effect, but will generally not stack the strength of their effects."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Status_HUD/Exposed",
+     "quote": "putting them into the {{#Invoke:Utils|IconLink|Dying State}} with a single hit."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Status_HUD/Broken",
+     "quote": "can no longer be healed past the {{#Invoke:Utils|IconLink|Injured State}}, neither by themselves, other Survivors, nor any Healing effects."
+    }
+   ]
+  },
+  {
+   "id": "mangled-haemorrhage",
+   "title": "Mangled and Haemorrhage (current numbers)",
+   "rule": "Mangled: -20% healing speed on the affected Survivor (healing takes 25% longer), self or altruistic; timer-based since 7.6.0 (duration set by the source; add-ons: 60/70/80 s by rarity); does not affect Mending/Recovering. Haemorrhage: more blood pools and partial healing progress drains at 7% per second when healing stops. Two Mangled sources do not stack to -40%: it is a single on/off effect (longest timer).",
+   "detail": null,
+   "confidence": "high",
+   "changedIn": "7.6.0 (Mangled timer-based again)",
+   "caveats": "Mangled is one on/off effect worth -20%. Other Killer-inflicted healing-speed penalties (e.g. Hex: Pentimento's -20% Healing and Repairing) are separate negative modifiers: they multiply with it and, per 9.6.0, are DR-ranked among Killer-role penalties. Whether the Mangled -20% itself takes a DR rank slot is not verified.",
+   "sources": [
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Status_HUD/Mangled",
+     "quote": "The effect causes an '''increase''' to the affected Survivor's Healing time by {{#Invoke:Utils|clror|+25 %}}, by '''reducing''' the Healing speed on them by {{#Invoke:Utils|clro|-20 %}}"
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Status_HUD/Haemorrhage",
+     "quote": "It also causes them to lose any partial Healing progress at a rate of {{#Invoke:Utils|clror|-7 %/s}}, if not healed fully."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Status_HUD",
+     "quote": "'''Status Effects''' that are on a timer may have their timer refreshed by a new application of the effect, but will generally not stack the strength of their effects."
+    }
+   ]
+  },
+  {
+   "id": "endurance-deep-wound",
+   "title": "Endurance does not stack",
+   "rule": "Endurance absorbs one hit while Injured and converts it into Deep Wound. A Survivor already in Deep Wound cannot be protected by Endurance, so several Endurance sources never absorb more than one hit in a row. Endurance is cancelled by any Conspicuous Action. Deep Wound: 20 s bleed-out timer that pauses while running or mending; any damage while in Deep Wound downs the Survivor.",
+   "detail": null,
+   "confidence": "high",
+   "changedIn": "6.1.0",
+   "caveats": null,
+   "sources": [
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Status_HUD/Endurance",
+     "quote": "Survivors already suffering from the '''''Deep Wound'' Status Effect''' cannot be protected by '''''Endurance'''''."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Status_HUD",
+     "quote": "This change was motivated by wishing to prevent Survivors from being able to avoid more than just one hit from the Killer through stacking '''''Endurance'''''."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Status_HUD/Deep_Wound",
+     "quote": "If Survivors take any damage while suffering from '''''Deep Wound''''', they immediately enter the ''Dying State''."
+    }
+   ]
+  },
+  {
+   "id": "aura-reading",
+   "title": "Aura reading: ranges, durations, extension perks",
+   "rule": "Aura reveals from different perks are independent reveals; no page documents any summing of ranges or durations between different aura perks, and aura range/duration is not in the DR list. Extension perks: Lethal Pursuer adds +2 s to EVERY instance of a Survivor's aura being revealed to the Killer, including its own start-of-trial reveal (7/8/9 s -> 9/10/11 s); it also extends add-on reveals. Open-Handed adds +8/12/16 m to finite-range, Survivor-sourced aura abilities for all Survivors and does not stack with other copies of itself. Blindness suppresses aura reading (binary); Undetectable blocks Survivor aura reads of the Killer.",
+   "detail": null,
+   "confidence": "medium",
+   "changedIn": "6.1.0 (Lethal Pursuer extension added); 4.7.0 (Open-Handed no longer stacks)",
+   "caveats": "Lethal Pursuer / Open-Handed values are high confidence. 'Aura effects from different perks do not sum' is an absence-of-evidence conclusion (no stacking rule exists on the Auras page or in the DR list), hence medium.",
+   "sources": [
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Lethal_Pursuer",
+     "quote": "* Extends the duration of all instances of a Survivor Aura being revealed to you by +2 seconds."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Template%3APatch_9.4.0",
+     "quote": "**Fixed an issue where The First's Gutted Supercom add-on was not extended by Lethal Pursuer."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Open-Handed",
+     "quote": "* Increases the radius of all Aura-reading abilities by 8/12/16 metres."
+    }
+   ]
+  },
+  {
+   "id": "hex-totems",
+   "title": "Hex perks and the 5-totem limit",
+   "rule": "Each Hex needs its own Totem and a trial only has 5. Every extra Hex leaves fewer Dull Totems for Hexes that light later, and each one can be cleansed separately.",
+   "detail": "Every Trial has exactly 5 Totems. Each equipped Hex perk needs its own Totem (one Hex per Totem), so every Hex perk consumes one of the 5 and can be removed by cleansing/blessing that Totem (cleanse 14 s). Hexes that light later (No One Escapes Death, Plaything, Face the Darkness, Two Can Play, Thrill of the Hunt, Scared to Death) need a remaining DULL Totem at that moment - if none is left they cannot activate. Diminishing value of stacking Hexes: more Hexes = fewer dull totems for late-lighting Hexes, and Survivors cannot tell which Totem holds which Hex. Synergies: Hex: Undying moves a cleansed Hex onto its own Totem; Hex: Thrill of the Hunt gains 1 token per lit Hex Totem (blocks Totems 4/5/6 s per token on hook, max 20/25/30 s); Hex: Pentimento rekindles cleansed Totems (max 5 tokens).",
+   "confidence": "high",
+   "changedIn": null,
+   "caveats": "No rule limiting the NUMBER of Hex perks other than the 4 perk slots vs 5 totems was found.",
+   "sources": [
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Totems",
+     "quote": "All Trials spawn with {{#Invoke:Utils|clror|5}} '''Totems''' in random locations"
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Hex_Perks",
+     "quote": "For each equipped '''Hex Perk''', one of those '''Dull Totems''' will be lit and converted to a '''Hex Totem''', tying that '''Perk''' to it"
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Hex%3A_Undying",
+     "quote": "* Transfers the cleansed Hex to the Hex Totem associated with Hex: Undying instead, replacing it."
+    }
+   ]
+  },
+  {
+   "id": "scourge-hooks",
+   "title": "Scourge Hook perks share the same 4 hooks",
+   "rule": "Scourge Hook perks share the same 4 Scourge Hooks: equipping more of them does not add hooks, every Scourge Hook simply carries all of their effects.",
+   "detail": "Equipping any Scourge Hook perk converts 4 random hooks into Scourge Hooks. The number is fixed at 4 no matter how many Scourge Hook perks are equipped (it does not stack); every Scourge Hook then applies the effects of ALL equipped Scourge Hook perks. Only exception: Scourge Hook: Monstrous Shrine additionally converts the 4 Basement hooks (8 total).",
+   "confidence": "high",
+   "changedIn": null,
+   "caveats": null,
+   "sources": [
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Scourge_Hook_Perks",
+     "quote": "the game transforms '''{{#Invoke:Utils|clr|2|4 Hooks}}''' into '''Scourge Hooks'''.<br>This number is static and does not stack with other '''Scourge Hook Perks'''."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Scourge_Hook%3A_Monstrous_Shrine",
+     "quote": "At the start of the Trial, the 4 Hooks located inside the Basement and an additional 4 Hooks located throughout the Trial Grounds are all changed into Scourge Hooks:"
+    }
+   ]
+  },
+  {
+   "id": "boons",
+   "title": "Boon perks",
+   "rule": "All your Boon perks go onto the one Totem you bless, so they share a single 24 m area and are all lost together when it is snuffed.",
+   "detail": "All Boon perks a Survivor has equipped are applied to the ONE Totem they bless (range 24 m); blessing takes 14 s on a Dull Totem, 28 s on a Hex Totem; the Killer snuffs in 1 s and Survivors can re-bless indefinitely. Overlapping Boon Totems: different Boon effects all apply, but the same effect from two Totems applies only once (no stacking).",
+   "confidence": "high",
+   "changedIn": null,
+   "caveats": null,
+   "sources": [
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Boon_Perks",
+     "quote": "However, if there are Perks with the same effect, only '''{{#Invoke:Utils|clr|2|one instance}}''' of the effect will apply, meaning they will '''''{{#Invoke:Utils|clr|8|not}}''''' stack."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Template%3APatch_10.1.0",
+     "quote": "** Fixed an issue where Boon: Steadfast's effect stacked when a Generator was in range of two Boon Totems."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Status_HUD/Blessed",
+     "quote": "applied within a fixed radius of '''{{#Invoke:Utils|clr|2|24 metres}}''' around [[Boon Totems]]"
+    }
+   ]
+  },
+  {
+   "id": "terror-radius",
+   "title": "Terror Radius modifiers",
+   "rule": "Base Terror Radius is per Killer (commonly 32 m for 4.6 m/s killers, 24 m for 4.4 m/s; some 40 m / 20 m). Percentage perks scale the base: Distressing +30%; Monitor & Abuse +5/10/15% in chase, -15/20/25% out of chase. Agitation adds a FLAT +12 m while carrying. Undetectable sets the Terror Radius to 0 (binary). The wiki only tabulates single-perk results; how several TR modifiers combine (sum of percentages vs product, and order of flat +12 m) is not documented. 'Terror Radius Size' is in the DR list, so multiple percentage modifiers are diminished by rank.",
+   "detail": null,
+   "confidence": "low",
+   "changedIn": "9.2.0 (Monitor & Abuse); 8.4.0 (Distressing)",
+   "caveats": "Single-perk numbers are high confidence; the multi-modifier combination rule (additive vs multiplicative, DR interplay between a positive and a negative TR modifier) could NOT be verified.",
+   "sources": [
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Terror_Radius",
+     "quote": "* {{#Invoke:Utils|clror|32 metres}} for 115-Killers (Walking speed of {{#Invoke:Utils|clro|4.6 m/s}})"
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Monitor_%26_Abuse",
+     "quote": "* Reduces your Terror Radius by 15/20/25 %."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Distressing",
+     "quote": "* Increases your Terror Radius by +30 %"
+    }
+   ]
+  },
+  {
+   "id": "stealth-undetectable",
+   "title": "Stealth (Undetectable / Oblivious)",
+   "rule": "Undetectable is binary and never stacks: it suppresses the Terror Radius and Red Stain and blocks Survivor aura-reads of the Killer; Lullabies are not suppressed. Several Undetectable sources only matter for uptime (longest timer). Oblivious (Survivor side) is also binary: the Survivor does not perceive the Terror Radius and is not affected by effects that require being inside it.",
+   "detail": null,
+   "confidence": "high",
+   "changedIn": null,
+   "caveats": "There is no separate 'Stealth' page on the wiki; stealth is modelled entirely through Undetectable.",
+   "sources": [
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Status_HUD/Undetectable",
+     "quote": "* Suppresses the {{#Invoke:Utils|IconLink|Terror Radius}}"
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Status_HUD/Oblivious",
+     "quote": "suffer from any effects that rely on Survivors being inside the '''Terror Radius''' to be applied."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Status_HUD",
+     "quote": "'''Status Effects''' that are on a timer may have their timer refreshed by a new application of the effect, but will generally not stack the strength of their effects."
+    }
+   ]
+  },
+  {
+   "id": "wiggle",
+   "title": "Wiggle / carry modifiers",
+   "rule": "Wiggle meter: 16 charges filling at a fixed 1 c/s while skill checks succeed (16 s); each Killer drop adds +25%. Iron Grasp: +10/11/12% wiggle time and -75% strafing strength. Boil Over: +60/70/80% struggle (strafe) strength, hides hook auras within 16 m, +33% of current wiggle progress on a drop from height. Flip-Flop: dying-state recovery also fills the wiggle meter at 50% of recovery, up to 40/45/50%. Power Struggle: usable once wiggle progress reaches 25/20/15% (so Flip-Flop can pre-charge it). Agitation: +14/16/18% carry speed (a Haste effect) and +12 m Terror Radius. Boil Over vs Iron Grasp: the two strafe modifiers oppose each other. 'Wiggle' speed and 'Wiggle Strength' are DR categories.",
+   "detail": null,
+   "confidence": "medium",
+   "changedIn": "10.2.0 (Iron Grasp 4/8/12 -> 10/11/12 %; Agitation 6/12/18 -> 14/16/18 %)",
+   "caveats": "Individual numbers are high confidence. Wiki pages disagree on Boil Over + Iron Grasp: the Boil Over page says Boil Over 'overpowers' Iron Grasp's reduction, the Iron Grasp page says the two 'negat[e] one another'; neither gives a formula (e.g. 1.8 * 0.25 = 0.45 vs 1 + 0.8 - 0.75 = 1.05) - NOT verified. Agitation being a Haste effect means it shares the Haste DR ranking with other Killer Haste perks while carrying.",
+   "sources": [
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Wiggle",
+     "quote": "The ''Wiggle Meter'' will automatically fill at a fixed rate of {{#Invoke:Utils|clror|+1 c/s}}"
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Iron_Grasp",
+     "quote": "* Increases the time required to break free from your grasp by 10/11/12 %."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Boil_Over",
+     "quote": "* Increases the strength of the Struggle Effects on the Killer from your Wiggling by 60/70/80 %."
+    }
+   ]
+  },
+  {
+   "id": "same-perk-multiple-instances",
+   "title": "Same perk on several players / repeated activation",
+   "rule": "Team-aura perks state explicitly that a Survivor can only be affected by ONE instance (Prove Thyself, Vigil, Open-Handed), so two teammates running the same perk do not double the effect. Re-triggering a perk on yourself does not stack with itself unless the text says 'stack-able'/tokens (e.g. Fire Up, Prove Thyself per-Survivor bonus, Undone tokens). Duplicate Realm/Map offerings no longer stack (9.0.0).",
+   "detail": null,
+   "confidence": "high",
+   "changedIn": "9.2.0 (Vigil no longer stacks with itself); 9.0.0 (offerings)",
+   "caveats": "This matters mostly for team builds; within one build each perk is unique anyway.",
+   "sources": [
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Vigil",
+     "quote": "Survivors can only be affected by one instance of Vigil at a time."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Template%3APatch_9.2.0",
+     "quote": "***Survivors can now only benefit from one Vigil perk's effect at a time (previously stacked with other versions of itself)."
+    },
+    {
+     "url": "https://deadbydaylight.wiki.gg/wiki/Prove_Thyself",
+     "quote": "Survivors can only be affected by one instance of Prove Thyself at a time."
+    }
+   ]
+  },
+  {
+   "id": "skill-check-modifiers",
+   "title": "Skill-check modifiers",
+   "rule": "Skill-check bonus, chance, speed, difficulty and penalty modifiers are DR categories. Positive skill-check CHANCE modifiers are ranked only within the same role (a Survivor's own chance perk does not diminish a Killer's). Skill-check speed was confirmed (bug fix in 9.6.0) to be affected by DR.",
+   "detail": null,
+   "confidence": "medium",
+   "changedIn": "9.6.0",
+   "caveats": "Base skill-check odds/values were not researched (out of scope).",
+   "sources": [
+    {
+     "url": "https://forums.bhvr.com/dead-by-daylight/kb/articles/544-9-6-0-patch-notes",
+     "quote": "Positive skill check chance modifiers"
+    },
+    {
+     "url": "https://steamcommunity.com/app/381210/discussions/0/801220136404188507/",
+     "quote": "- Skill Check Chance"
+    }
+   ]
+  }
+ ]
+}

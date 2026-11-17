@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Fog Archive Scout — Options</title><link rel="stylesheet" href="ext.css">
+<style>
+main { max-width: 760px; margin: 0 auto; padding: 24px 18px 60px; }
+label { display: grid; gap: 4px; margin: 10px 0; }
+label > span { font: 700 11px 'Roboto Condensed', Arial; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.chk { display: flex; gap: 8px; align-items: center; margin: 6px 0; }
+#channels { display: grid; gap: 6px; }
+#channels .card { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+#channels small { color: var(--muted); }
+#msg { min-height: 20px; margin-top: 8px; }
+</style></head>
+<body><main>
+  <h1>Fog Archive Scout</h1>
+  <p class="muted">Checks your chosen Dead by Daylight channels for new build videos and keeps what it finds in this browser only. Your Fog Archive shows the finds when you open it.</p>
+
+  <h2>Archive</h2>
+  <label><span>Archive address</span><input id="siteUrl" placeholder="Learned automatically when you open your archive, e.g. https://you.github.io/fog-archive/"></label>
+
+  <h2>Checking</h2>
+  <label><span>Check every</span>
+    <select id="interval"><option value="15">15 minutes</option><option value="30">30 minutes</option><option value="60">hour</option><option value="180">3 hours</option><option value="360">6 hours</option><option value="720">12 hours</option><option value="1440">day</option></select></label>
+  <div class="chk"><input type="checkbox" id="notify"><span>Notify me when new builds are found</span></div>
+  <label><span>Video title keywords (comma separated)</span><input id="keywords"></label>
+  <div class="row"><button id="check" class="primary">Check now</button><span id="last" class="muted"></span></div>
+
+  <h2>Where to look for builds</h2>
+  <div class="chk"><input type="checkbox" id="src-description"><span>Video descriptions (the creator's own words, most reliable)</span></div>
+  <div class="chk"><input type="checkbox" id="src-title"><span>Video titles</span></div>
+  <div class="chk"><input type="checkbox" id="src-askAI"><span>YouTube's "Ask" AI, from the panel on a video page (only when you click it; AI can be wrong)</span></div>
+  <div class="chk"><input type="checkbox" id="src-comments"><span>Comments, from the panel on a video page (last resort, marked risky)</span></div>
+
+  <h2>Channels</h2>
+  <div class="row"><input id="add" placeholder="@handle, channel URL or UC… id" style="flex:1"><button id="addBtn">Add channel</button></div>
+  <div id="channels" style="margin-top:10px"></div>
+
+  <h2>Found builds</h2>
+  <div class="row"><button id="export">Export for the shared archive</button><button id="clear">Clear found builds</button></div>
+  <p class="muted">Export writes the builds in the archive's curated format (data/curated/builds.json) so they can be added for everyone. They still have to pass the archive's fact check.</p>
+  <div id="msg"></div>
+</main><script src="options.js"></script></body></html>

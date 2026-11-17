@@ -1,0 +1,18 @@
+{
+  "note": "Vetted Dead by Daylight creators whose public channel feeds are checked on every sync. Add one with: node api/tools/resolve-channel.mjs @handle",
+  "channels": [
+    { "id": "UC7U8EmWt_LYbSfpUjPQaWKA", "name": "Tatariu" },
+    { "id": "UCMpvShSjgBw3FVYYlBBIweA", "name": "More Seine" },
+    { "id": "UCb243glXKZ3dbqoEvxc-hYQ", "name": "Seine" },
+    { "id": "UCDO__Z-tZD4bfG9m4AkK_uA", "name": "not Otzdarva" },
+    { "id": "UCUhGCdMIFqcRlHb_dthD5Xw", "name": "Otzdarva", "dbdOnly": false },
+    { "id": "UCR5hk1KJMfT-tzrA7Vu5WgQ", "name": "Monto" },
+    { "id": "UCsbbUua4-XSHMoCUbP1h0Fg", "name": "blackoutraven" },
+    { "id": "UCYU5Y60D8p4E2ifVIEFPdmA", "name": "Final Chase" },
+    { "id": "UCbaAPYR45VYpl3T9DOiGBSA", "name": "Kam" },
+    { "id": "UCyXoJXyGvrkechywZx5tXTg", "name": "Fuhb" },
+    { "id": "UCtemvJ-ngKgSwjQLpz_GKcw", "name": "chazz" },
+    { "id": "UCdvT7UvQEjBN8kMGwn7jMww", "name": "Melo" },
+    { "id": "UCr8skIrWZGMXNRDQpEWljkA", "name": "Lil Belly" }
+  ]
+}
