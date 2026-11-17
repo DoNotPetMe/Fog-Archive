@@ -1,56 +1,56 @@
 // The Entity: drifting embers, limbs that reach in from the edges of the
 // screen, and the skill check used by "Offer to the Entity".
 //
-// Performance budget: the ember canvas is capped at 36 particles, ~30 fps and
-// 1.5x device pixels, and stops entirely when the tab is hidden or the user
-// asks for reduced motion. The limbs are static SVG moved by CSS transforms.
+// Performance budget: the embers (embers.js) are capped at 36 particles, ~30 fps
+// and 1.5x device pixels, are drawn from a worker where the browser allows it, and
+// stop entirely while the window is hidden or not focused (idle.js). The limbs are
+// sprites moved by CSS transforms.
 
 import { openModal, closeModal, esc } from './ui.js';
-
-const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+import { onIdle } from './idle.js';
+import { createEmbers } from './embers.js';
 
 // ------------------------------------------------------------------ embers
 export function initEmbers() {
   const canvas = document.getElementById('embers');
-  if (!canvas || reduced()) return;
-  const ctx = canvas.getContext('2d');
-  const MAX = 36;
-  let w = 0, h = 0, dpr = 1, parts = [], raf = 0, last = 0;
-  const resize = () => {
-    dpr = Math.min(1.5, devicePixelRatio || 1);
-    w = innerWidth; h = innerHeight;
-    canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  };
-  const spawn = (anywhere) => ({
-    x: Math.random() * w, y: anywhere ? Math.random() * h : h + 10,
-    vx: (Math.random() - 0.5) * 12, vy: -(14 + Math.random() * 30),
-    r: 0.6 + Math.random() * 1.6, life: 0, ttl: 5 + Math.random() * 8, sway: Math.random() * 6.28,
-  });
-  const frame = (t) => {
-    raf = requestAnimationFrame(frame);
-    if (t - last < 33) return; // ~30 fps is plenty for slow embers
-    const dt = Math.min(0.1, (t - last) / 1000);
-    last = t;
-    ctx.clearRect(0, 0, w, h);
-    while (parts.length < MAX) parts.push(spawn(parts.length < MAX / 2));
-    ctx.globalCompositeOperation = 'lighter';
-    for (let i = 0; i < parts.length; i++) {
-      const p = parts[i];
-      p.life += dt; p.sway += dt * 1.3;
-      p.x += (p.vx + Math.sin(p.sway) * 9) * dt; p.y += p.vy * dt;
-      if (p.life > p.ttl || p.y < -10) { parts[i] = spawn(false); continue; }
-      const a = Math.sin((p.life / p.ttl) * Math.PI) * 0.75;
-      ctx.fillStyle = `rgba(255,${110 + ((p.r * 50) | 0)},40,${a})`;
-      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.283); ctx.fill();
-    }
-  };
-  const start = () => { if (!raf) { last = performance.now(); raf = requestAnimationFrame(frame); } };
-  const stop = () => { cancelAnimationFrame(raf); raf = 0; };
+  if (!canvas) return;
+  // The embers are drawn from a worker when it proves it can run (it posts 'ready'); only then is
+  // the canvas handed over, because a transferred canvas can never be drawn here again. If the
+  // worker can't be made, errors or stays silent, the same embers run on the main thread instead.
+  let embers = null, size = null, idle = null;
+  const apply = () => { if (size) embers.resize(...size); if (idle !== null) (idle ? embers.stop() : embers.start()); };
+  const local = () => { embers = createEmbers(canvas.getContext('2d')); apply(); };
+  let wk = null;
+  if (canvas.transferControlToOffscreen && typeof Worker === 'function') {
+    try { wk = new Worker(new URL('./embers-worker.js', import.meta.url), { type: 'module' }); } catch { wk = null; }
+  }
+  if (wk) {
+    const fail = () => { clearTimeout(wait); wk.onmessage = wk.onerror = null; wk.terminate(); if (!embers) local(); };
+    const wait = setTimeout(fail, 4000);
+    wk.onerror = fail;
+    wk.onmessage = ({ data }) => {
+      if (data !== 'ready') return fail();
+      clearTimeout(wait);
+      wk.onmessage = null;
+      wk.onerror = (e) => console.warn('embers worker:', e.message);
+      let off = null;
+      try {
+        off = canvas.transferControlToOffscreen();
+        wk.postMessage({ canvas: off }, [off]);
+      } catch (err) {
+        wk.terminate();
+        if (!off) local(); // the canvas is still ours
+        else console.warn('embers off:', err); // handed over but never arrived: nothing can draw it now
+        return;
+      }
+      embers = { resize: (...s) => wk.postMessage({ size: s }), start: () => wk.postMessage({ idle: false }), stop: () => wk.postMessage({ idle: true }) };
+      apply();
+    };
+  } else local();
+  const resize = () => { size = [innerWidth, innerHeight, Math.min(1.5, devicePixelRatio || 1)]; embers?.resize(...size); };
   resize();
   addEventListener('resize', resize, { passive: true });
-  document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
-  start();
+  onIdle((now) => { idle = now; if (embers) (now ? embers.stop() : embers.start()); });
 }
 
 // ------------------------------------------------------------------- limbs
@@ -132,7 +132,8 @@ export function skillCheck({ title = 'Offer to the Entity', hint = '' } = {}) {
       finish(a >= zoneStart && a < zoneStart + GREAT ? 'great' : a >= zoneStart + GREAT && a <= zoneStart + GREAT + GOOD ? 'good' : 'fail');
     };
     const tick = (t) => {
-      angle += ((t - last) / 1000) * speed; last = t;
+      // capped so the needle waits while the tab is hidden instead of jumping past the zone on return
+      angle += Math.max(0, Math.min(0.05, (t - last) / 1000)) * speed; last = t;
       if (angle >= 360) { needle.setAttribute('transform', `rotate(359 ${C} ${C})`); finish('fail'); return; }
       needle.setAttribute('transform', `rotate(${angle.toFixed(1)} ${C} ${C})`);
       raf = requestAnimationFrame(tick);
@@ -141,6 +142,6 @@ export function skillCheck({ title = 'Offer to the Entity', hint = '' } = {}) {
     function cleanup() { cancelAnimationFrame(raf); document.removeEventListener('keydown', onKey, true); }
     document.addEventListener('keydown', onKey, true);
     hit.addEventListener('pointerdown', (e) => { e.preventDefault(); press(); });
-    setTimeout(() => { if (!done) { last = performance.now(); raf = requestAnimationFrame(tick); } }, reduced() ? 0 : 500);
+    setTimeout(() => { if (!done) { last = performance.now(); raf = requestAnimationFrame(tick); } }, 500);
   });
 }

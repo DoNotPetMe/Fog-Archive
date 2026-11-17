@@ -525,8 +525,9 @@ export function askExtension(type, payload = {}) {
 // -------------------------------------------------------------------- boot
 async function boot() {
   initTooltips();
-  initEmbers();
-  initEntity();
+  // decoration must never stop the archive from loading
+  try { initEmbers(); } catch (err) { console.warn('embers off:', err); }
+  try { initEntity(); } catch (err) { console.warn('entity limbs off:', err); }
   try {
     await loadAll();
   } catch (err) {
