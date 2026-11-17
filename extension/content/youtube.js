@@ -115,23 +115,45 @@
 
   // --------------------------------------------------------- YouTube's AI
   const QUESTION = 'Which 4 perks are in the build used in this video? Reply with only the exact perk names, separated by commas.';
-  const askPanel = () => document.querySelector('ytd-engagement-panel-section-list-renderer[visibility="ENGAGEMENT_PANEL_VISIBILITY_EXPANDED"][target-id*="ask" i], ytd-engagement-panel-section-list-renderer[visibility="ENGAGEMENT_PANEL_VISIBILITY_EXPANDED"][target-id*="chat" i], ytd-engagement-panel-section-list-renderer[visibility="ENGAGEMENT_PANEL_VISIBILITY_EXPANDED"][target-id*="youchat" i]');
+  // YouTube's own search bar and top bar: never typed into, whatever happens
+  const SEARCH_UI = 'ytd-masthead, #masthead, #masthead-container, ytd-searchbox, yt-searchbox, #search, form#search-form, #search-form';
+  const isSearchUi = (n) => !!n.closest(SEARCH_UI) || n.getAttribute?.('name') === 'search_query';
+  const PANEL = 'ytd-engagement-panel-section-list-renderer';
+  const expandedPanels = () => [...document.querySelectorAll(`${PANEL}[visibility="ENGAGEMENT_PANEL_VISIBILITY_EXPANDED"]`)].filter((p) => !isSearchUi(p));
+  let askPanelEl = null;
+
+  /** The open Ask panel: the one we saw open after clicking "Ask", or an open panel that looks like a chat. */
+  function askPanel() {
+    if (askPanelEl?.isConnected && askPanelEl.getAttribute('visibility') === 'ENGAGEMENT_PANEL_VISIBILITY_EXPANDED') return askPanelEl;
+    return expandedPanels().find((p) => /ask|chat|conversation/i.test(p.getAttribute('target-id') || '')) || null;
+  }
+  const textBoxIn = (panel) => [...panel.querySelectorAll('textarea, [contenteditable="true"], input[type="text"]')]
+    .find((n) => !isSearchUi(n) && n.offsetParent !== null);
+
+  async function copyQuestion() {
+    try { await navigator.clipboard.writeText(QUESTION); return true; } catch { return false; }
+  }
 
   async function askAI() {
     if (!current) return;
-    const btn = [...document.querySelectorAll('ytd-watch-metadata button, #actions button, yt-button-view-model button, ytd-button-renderer button')]
-      .find((b) => /^ask\b/i.test((b.getAttribute('aria-label') || b.textContent || '').trim()));
+    const btn = [...document.querySelectorAll('ytd-watch-metadata button, #actions button')]
+      .filter((b) => !isSearchUi(b))
+      .find((b) => /^ask(?: about this video)?$/i.test((b.getAttribute('aria-label') || b.textContent || '').trim()));
     if (!btn) {
       const signedOut = !!document.querySelector('a[href*="ServiceLogin"], ytd-masthead a[aria-label*="Sign in" i]');
       status(signedOut ? "YouTube's Ask button only appears when you are signed in to YouTube." : "YouTube's Ask feature is not offered on this video for your account.", 'bad');
       return;
     }
+    const before = new Set(expandedPanels());
     btn.click();
-    const input = await waitFor(() => {
-      const p = askPanel() || document;
-      return p.querySelector('textarea, [contenteditable="true"][role="textbox"], input[type="text"][placeholder]');
-    });
-    if (!input) { status(`The Ask panel opened but its question box was not found. Ask it: "${QUESTION}" then press "Read Ask answer".`); return; }
+    const panel = await waitFor(() => expandedPanels().find((p) => !before.has(p)) || askPanel(), 5000);
+    askPanelEl = panel || null;
+    const input = panel ? await waitFor(() => textBoxIn(panel), 4000) : null;
+    if (!input) {
+      const copied = await copyQuestion();
+      status(`${panel ? 'The Ask panel is open' : 'The Ask button was clicked'}, but I could not find its question box, so I did not type anything. ${copied ? 'The question is copied: paste it into' : 'Type this into'} YouTube's Ask box${copied ? '' : `: "${QUESTION}"`}, send it, then press "Read Ask answer".`);
+      return;
+    }
     input.focus();
     if ('value' in input) {
       const setter = Object.getOwnPropertyDescriptor(Object.getPrototypeOf(input), 'value')?.set;
@@ -139,7 +161,8 @@
     } else input.textContent = QUESTION;
     input.dispatchEvent(new InputEvent('input', { bubbles: true, data: QUESTION }));
     await sleep(300);
-    const sendBtn = (askPanel() || document).querySelector('button[aria-label*="send" i], button[aria-label*="submit" i]');
+    // send only from inside the Ask panel
+    const sendBtn = [...panel.querySelectorAll('button[aria-label*="send" i], button[aria-label*="submit" i]')].find((b) => !isSearchUi(b));
     if (sendBtn && !sendBtn.disabled) sendBtn.click();
     else input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', code: 'Enter', keyCode: 13, bubbles: true }));
     status("Waiting for YouTube's AI to answer…");
