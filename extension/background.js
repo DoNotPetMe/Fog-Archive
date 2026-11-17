@@ -23,7 +23,7 @@ const DEFAULT_CHANNELS = [
 ].map(([id, name]) => ({ id, name }));
 
 export const DEFAULTS = {
-  siteUrl: '', // learned the first time you open the archive; can be set in Options
+  siteUrl: 'https://donotpetme.github.io/Fog-Archive/', // the live archive; Options can point it elsewhere (e.g. a local copy)
   intervalMinutes: 180,
   notify: true,
   sources: { title: true, description: true, askAI: true, comments: true },
@@ -38,7 +38,8 @@ const CHANNEL_ID = /^UC[A-Za-z0-9_-]{22}$/;
 // ------------------------------------------------------------------ helpers
 async function settings() {
   const { settings: s } = await chrome.storage.local.get('settings');
-  return { ...DEFAULTS, ...(s || {}), sources: { ...DEFAULTS.sources, ...(s?.sources || {}) } };
+  // an empty saved address (older versions, or cleared in Options) means the live archive
+  return { ...DEFAULTS, ...(s || {}), siteUrl: s?.siteUrl || DEFAULTS.siteUrl, sources: { ...DEFAULTS.sources, ...(s?.sources || {}) } };
 }
 
 async function fetchWithTimeout(url, ms = 20000) {

@@ -9,8 +9,8 @@ async function render() {
   const st = document.getElementById('status');
   st.textContent = `${settings.channels} channels · checked ${ago(state?.lastCheck)} · every ${settings.intervalMinutes} min`;
   if (state?.error) { st.textContent += ` — ${state.error}`; st.className = 'err'; } else if (state?.failed?.length) { st.textContent += ` — ${state.failed.length} channel(s) failed`; }
-  const open = document.getElementById('open');
-  if (settings.siteUrl) { open.hidden = false; open.href = `${settings.siteUrl}#/builds?tags=mine`; }
+  // always shown: the live archive unless Options points somewhere else
+  if (settings.siteUrl) document.getElementById('open').href = `${settings.siteUrl}#/builds`;
   const list = document.getElementById('list');
   list.textContent = '';
   if (!builds.length) { list.innerHTML = '<p class="muted">No builds found yet.</p>'; return; }
