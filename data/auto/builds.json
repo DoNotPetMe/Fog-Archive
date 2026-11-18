@@ -1,6 +1,36 @@
 {
  "builds": [
   {
+   "title": "DBD's BEST Killer Build Is Somehow Getting STRONGER",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Secret Project",
+    "Thrilling Tremors",
+    "Undone",
+    "Deadlock"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=KMI7PLh51Wk",
+    "date": "2026-11-18"
+   },
+   "video": {
+    "id": "KMI7PLh51Wk",
+    "title": "DBD's BEST Killer Build Is Somehow Getting STRONGER",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "DBD's BEST Killer Build Is Somehow Getting STRONGER",
+    "found": "2026-11-18"
+   }
+  },
+  {
    "title": "Making Items OVERPOWERED With The BUFFED Chest Build",
    "role": "survivor",
    "killer": null,
