@@ -1,6 +1,36 @@
 {
  "builds": [
   {
+   "title": "This Build Reduces Generator Charges To ALMOST ZERO",
+   "role": "survivor",
+   "killer": null,
+   "perks": [
+    "Specialist",
+    "Invocation: Weaving Spiders",
+    "Pharmacy",
+    "Appraisal"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Seine",
+    "url": "https://www.youtube.com/watch?v=UhMhj6thKDk",
+    "date": "2026-11-20"
+   },
+   "video": {
+    "id": "UhMhj6thKDk",
+    "title": "This Build Reduces Generator Charges To ALMOST ZERO",
+    "channel": "Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "This Build Reduces Generator Charges To ALMOST ZERO",
+    "found": "2026-11-20"
+   }
+  },
+  {
    "title": "DBD's BEST Killer Build Is Somehow Getting STRONGER",
    "role": "killer",
    "killer": null,
