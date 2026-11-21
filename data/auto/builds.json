@@ -1,6 +1,306 @@
 {
  "builds": [
   {
+   "title": "The Ghost Face",
+   "role": "killer",
+   "killer": "The Ghost Face",
+   "perks": [
+    "Surge",
+    "Whispers",
+    "Lay Waste",
+    "Brutal Strength"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=HzsXmq8Alcc",
+    "date": "2026-11-21"
+   },
+   "video": {
+    "id": "HzsXmq8Alcc",
+    "title": "I Found The STRONGEST Builds For DBD's WORST Killers",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "I Found The STRONGEST Builds For DBD's WORST Killers",
+    "found": "2026-11-21"
+   }
+  },
+  {
+   "title": "The Skull Merchant",
+   "role": "killer",
+   "killer": "The Skull Merchant",
+   "perks": [
+    "Save the best for last",
+    "Hex: Plaything",
+    "Undone",
+    "Batteries Included"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=HzsXmq8Alcc",
+    "date": "2026-11-21"
+   },
+   "video": {
+    "id": "HzsXmq8Alcc",
+    "title": "I Found The STRONGEST Builds For DBD's WORST Killers",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "I Found The STRONGEST Builds For DBD's WORST Killers",
+    "found": "2026-11-21"
+   }
+  },
+  {
+   "title": "The Trapper",
+   "role": "killer",
+   "killer": "The Trapper",
+   "perks": [
+    "Save the best for last",
+    "Deadlock",
+    "Agitation",
+    "Hex: Crowd Control"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=HzsXmq8Alcc",
+    "date": "2026-11-21"
+   },
+   "video": {
+    "id": "HzsXmq8Alcc",
+    "title": "I Found The STRONGEST Builds For DBD's WORST Killers",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "I Found The STRONGEST Builds For DBD's WORST Killers",
+    "found": "2026-11-21"
+   }
+  },
+  {
+   "title": "The Demogorgon",
+   "role": "killer",
+   "killer": "The Demogorgon",
+   "perks": [
+    "Undone",
+    "Superior Anatomy",
+    "Fire Up",
+    "Scourge Hook: Gift of Pain"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=HzsXmq8Alcc",
+    "date": "2026-11-21"
+   },
+   "video": {
+    "id": "HzsXmq8Alcc",
+    "title": "I Found The STRONGEST Builds For DBD's WORST Killers",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "I Found The STRONGEST Builds For DBD's WORST Killers",
+    "found": "2026-11-21"
+   }
+  },
+  {
+   "title": "High Level Gameplay With 3 Different Killers! (No Commentary)",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Sloppy Butcher",
+    "Thanatophobia",
+    "A Nurse's Calling",
+    "Leverage"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Final Chase",
+    "url": "https://www.youtube.com/watch?v=JL2GkaB7WBc",
+    "date": "2026-11-21"
+   },
+   "video": {
+    "id": "JL2GkaB7WBc",
+    "title": "High Level Gameplay With 3 Different Killers! (No Commentary)",
+    "channel": "Final Chase"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "High Level Gameplay With 3 Different Killers! (No Commentary)",
+    "found": "2026-11-21"
+   }
+  },
+  {
+   "title": "High Level Gameplay With 3 Different Killers! (No Commentary)",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Pop Goes the Weasel",
+    "Eruption",
+    "Brutal Strength",
+    "Nowhere to Hide"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Final Chase",
+    "url": "https://www.youtube.com/watch?v=JL2GkaB7WBc",
+    "date": "2026-11-21"
+   },
+   "video": {
+    "id": "JL2GkaB7WBc",
+    "title": "High Level Gameplay With 3 Different Killers! (No Commentary)",
+    "channel": "Final Chase"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "High Level Gameplay With 3 Different Killers! (No Commentary)",
+    "found": "2026-11-21"
+   }
+  },
+  {
+   "title": "High Level Gameplay With 3 Different Killers! (No Commentary)",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Lethal Pursuer",
+    "Barbecue & Chili",
+    "Darkness Revealed",
+    "Bitter Murmur"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Final Chase",
+    "url": "https://www.youtube.com/watch?v=JL2GkaB7WBc",
+    "date": "2026-11-21"
+   },
+   "video": {
+    "id": "JL2GkaB7WBc",
+    "title": "High Level Gameplay With 3 Different Killers! (No Commentary)",
+    "channel": "Final Chase"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "High Level Gameplay With 3 Different Killers! (No Commentary)",
+    "found": "2026-11-21"
+   }
+  },
+  {
+   "title": "High Level Gameplay With 3 Different Killers! (No Commentary)",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Iron Maiden",
+    "Corrupt Intervention",
+    "Scourge Hook: Pain Resonance",
+    "Dead Man’s Switch"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Final Chase",
+    "url": "https://www.youtube.com/watch?v=JL2GkaB7WBc",
+    "date": "2026-11-21"
+   },
+   "video": {
+    "id": "JL2GkaB7WBc",
+    "title": "High Level Gameplay With 3 Different Killers! (No Commentary)",
+    "channel": "Final Chase"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "High Level Gameplay With 3 Different Killers! (No Commentary)",
+    "found": "2026-11-21"
+   }
+  },
+  {
+   "title": "High Level Gameplay With 3 Different Killers! (No Commentary)",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Bamboozle",
+    "Enduring",
+    "Spirit Fury",
+    "Coup de Grâce"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Final Chase",
+    "url": "https://www.youtube.com/watch?v=JL2GkaB7WBc",
+    "date": "2026-11-21"
+   },
+   "video": {
+    "id": "JL2GkaB7WBc",
+    "title": "High Level Gameplay With 3 Different Killers! (No Commentary)",
+    "channel": "Final Chase"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "High Level Gameplay With 3 Different Killers! (No Commentary)",
+    "found": "2026-11-21"
+   }
+  },
+  {
+   "title": "High Level Gameplay With 3 Different Killers! (No Commentary)",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "No Way Out",
+    "Blood Warden",
+    "Remember Me",
+    "Terminus"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Final Chase",
+    "url": "https://www.youtube.com/watch?v=JL2GkaB7WBc",
+    "date": "2026-11-21"
+   },
+   "video": {
+    "id": "JL2GkaB7WBc",
+    "title": "High Level Gameplay With 3 Different Killers! (No Commentary)",
+    "channel": "Final Chase"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "High Level Gameplay With 3 Different Killers! (No Commentary)",
+    "found": "2026-11-21"
+   }
+  },
+  {
    "title": "This Build Reduces Generator Charges To ALMOST ZERO",
    "role": "survivor",
    "killer": null,
