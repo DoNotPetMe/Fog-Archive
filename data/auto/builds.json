@@ -1,6 +1,126 @@
 {
  "builds": [
   {
+   "title": "Making Survivors MISERABLE With Doctor & Dredge! (No Commentary)",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Unnerving Presence",
+    "Overcharge",
+    "Merciless Storm",
+    "Hex: Huntress Lullaby"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Final Chase",
+    "url": "https://www.youtube.com/watch?v=xKBbOof9wyQ",
+    "date": "2026-11-22"
+   },
+   "video": {
+    "id": "xKBbOof9wyQ",
+    "title": "Making Survivors MISERABLE With Doctor & Dredge! (No Commentary)",
+    "channel": "Final Chase"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "Making Survivors MISERABLE With Doctor & Dredge! (No Commentary)",
+    "found": "2026-11-22"
+   }
+  },
+  {
+   "title": "Making Survivors MISERABLE With Doctor & Dredge! (No Commentary)",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Distressing",
+    "Coulrophobia",
+    "Septic Touch",
+    "Infectious Fright"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Final Chase",
+    "url": "https://www.youtube.com/watch?v=xKBbOof9wyQ",
+    "date": "2026-11-22"
+   },
+   "video": {
+    "id": "xKBbOof9wyQ",
+    "title": "Making Survivors MISERABLE With Doctor & Dredge! (No Commentary)",
+    "channel": "Final Chase"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "Making Survivors MISERABLE With Doctor & Dredge! (No Commentary)",
+    "found": "2026-11-22"
+   }
+  },
+  {
+   "title": "Making Survivors MISERABLE With Doctor & Dredge! (No Commentary)",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Sloppy Butcher",
+    "Thanatophobia",
+    "A Nurse's Calling",
+    "Leverage"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Final Chase",
+    "url": "https://www.youtube.com/watch?v=xKBbOof9wyQ",
+    "date": "2026-11-22"
+   },
+   "video": {
+    "id": "xKBbOof9wyQ",
+    "title": "Making Survivors MISERABLE With Doctor & Dredge! (No Commentary)",
+    "channel": "Final Chase"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "Making Survivors MISERABLE With Doctor & Dredge! (No Commentary)",
+    "found": "2026-11-22"
+   }
+  },
+  {
+   "title": "Making Survivors MISERABLE With Doctor & Dredge! (No Commentary)",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Darkness Revealed",
+    "Make your Choice",
+    "Friends ‘Til the End",
+    "Lethal Pursuer"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Final Chase",
+    "url": "https://www.youtube.com/watch?v=xKBbOof9wyQ",
+    "date": "2026-11-22"
+   },
+   "video": {
+    "id": "xKBbOof9wyQ",
+    "title": "Making Survivors MISERABLE With Doctor & Dredge! (No Commentary)",
+    "channel": "Final Chase"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "Making Survivors MISERABLE With Doctor & Dredge! (No Commentary)",
+    "found": "2026-11-22"
+   }
+  },
+  {
    "title": "The Ghost Face",
    "role": "killer",
    "killer": "The Ghost Face",
