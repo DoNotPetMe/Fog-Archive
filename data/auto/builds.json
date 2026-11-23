@@ -1,6 +1,37 @@
 {
  "builds": [
   {
+   "title": "DBD's Basic Attack Killer META Is FINALLY Here",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Machine Learning",
+    "Help Wanted",
+    "Save the best for last",
+    "Hex: Nothing But Misery"
+   ],
+   "categories": [
+    "creator",
+    "meta"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=IV5QJ8f9x3E",
+    "date": "2026-11-23"
+   },
+   "video": {
+    "id": "IV5QJ8f9x3E",
+    "title": "DBD's Basic Attack Killer META Is FINALLY Here",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "DBD's Basic Attack Killer META Is FINALLY Here",
+    "found": "2026-11-23"
+   }
+  },
+  {
    "title": "Making Survivors MISERABLE With Doctor & Dredge! (No Commentary)",
    "role": "killer",
    "killer": null,
