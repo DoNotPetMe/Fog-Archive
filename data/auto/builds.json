@@ -1,6 +1,66 @@
 {
  "builds": [
   {
+   "title": "Stealth Terrifier",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "Dark Devotion",
+    "Unforeseen",
+    "Hex: Plaything",
+    "Hex: Thrill of the Hunt"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=akSxALBOkjM",
+    "date": "2026-11-24"
+   },
+   "video": {
+    "id": "akSxALBOkjM",
+    "title": "I Made Survivors DESPISE The Terrifier",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "I Made Survivors DESPISE The Terrifier",
+    "found": "2026-11-24"
+   }
+  },
+  {
+   "title": "Aura Reading Terrifier",
+   "role": "killer",
+   "killer": null,
+   "perks": [
+    "I'm All Ears",
+    "Lethal Pursuer",
+    "Barbecue & Chili",
+    "Deadlock"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=akSxALBOkjM",
+    "date": "2026-11-24"
+   },
+   "video": {
+    "id": "akSxALBOkjM",
+    "title": "I Made Survivors DESPISE The Terrifier",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "I Made Survivors DESPISE The Terrifier",
+    "found": "2026-11-24"
+   }
+  },
+  {
    "title": "DBD's Basic Attack Killer META Is FINALLY Here",
    "role": "killer",
    "killer": null,
