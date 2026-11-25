@@ -61,6 +61,36 @@
    }
   },
   {
+   "title": "Gambling Terrifier",
+   "role": "killer",
+   "killer": "The Terrifier",
+   "perks": [
+    "Funny Business",
+    "Enduring",
+    "Spirit Fury",
+    "Fire Up"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=akSxALBOkjM",
+    "date": "2026-11-24"
+   },
+   "video": {
+    "id": "akSxALBOkjM",
+    "title": "I Made Survivors DESPISE The Terrifier",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "I Made Survivors DESPISE The Terrifier",
+    "found": "2026-11-25"
+   }
+  },
+  {
    "title": "DBD's Basic Attack Killer META Is FINALLY Here",
    "role": "killer",
    "killer": null,
@@ -1199,6 +1229,36 @@
     "from": "description",
     "videoTitle": "This Underused Survivor Perk OBLITERATES Killer Players",
     "found": "2026-11-17"
+   }
+  },
+  {
+   "title": "The NEW Survivor Perk That Gives You 6 EXTRA Perks",
+   "role": "survivor",
+   "killer": null,
+   "perks": [
+    "Plunderer's Instinct",
+    "Appraisal",
+    "Streetwise",
+    "Best Gift Ever"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Seine",
+    "url": "https://www.youtube.com/watch?v=rbUvDtJzJcc",
+    "date": "2026-10-29"
+   },
+   "video": {
+    "id": "rbUvDtJzJcc",
+    "title": "The NEW Survivor Perk That Gives You 6 EXTRA Perks",
+    "channel": "Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "The NEW Survivor Perk That Gives You 6 EXTRA Perks",
+    "found": "2026-11-25"
    }
   },
   {
