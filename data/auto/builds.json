@@ -1,6 +1,156 @@
 {
  "builds": [
   {
+   "title": "I Created The Terrifier's SCARIEST Haste Build",
+   "role": "killer",
+   "killer": "The Terrifier",
+   "perks": [
+    "Machine Learning",
+    "Funny Business",
+    "Knock Out",
+    "Coup de Grâce"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "More Seine",
+    "url": "https://www.youtube.com/watch?v=F6XmQ5WxUXw",
+    "date": "2026-11-27"
+   },
+   "video": {
+    "id": "F6XmQ5WxUXw",
+    "title": "I Created The Terrifier's SCARIEST Haste Build",
+    "channel": "More Seine"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "I Created The Terrifier's SCARIEST Haste Build",
+    "found": "2026-11-27"
+   }
+  },
+  {
+   "title": "Art the Clown With 4 INSANE Builds",
+   "role": "killer",
+   "killer": "The Clown",
+   "perks": [
+    "Hex: Ruin",
+    "Surveillance",
+    "Scourge Hook: Pain Resonance",
+    "Hex: Undying"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Final Chase",
+    "url": "https://www.youtube.com/watch?v=Ri2XUM0Y2dA",
+    "date": "2026-11-27"
+   },
+   "video": {
+    "id": "Ri2XUM0Y2dA",
+    "title": "Art the Clown With 4 INSANE Builds | Dead by Daylight (No Commentary)",
+    "channel": "Final Chase"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "Art the Clown With 4 INSANE Builds | Dead by Daylight (No Commentary)",
+    "found": "2026-11-27"
+   }
+  },
+  {
+   "title": "Art the Clown With 4 INSANE Builds",
+   "role": "killer",
+   "killer": "The Clown",
+   "perks": [
+    "Scourge Hook: Jagged Compass",
+    "Scourge Hook: Monstrous Shrine",
+    "Scourge Hook: Gift of Pain",
+    "Scourge Hook: Pain Resonance"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Final Chase",
+    "url": "https://www.youtube.com/watch?v=Ri2XUM0Y2dA",
+    "date": "2026-11-27"
+   },
+   "video": {
+    "id": "Ri2XUM0Y2dA",
+    "title": "Art the Clown With 4 INSANE Builds | Dead by Daylight (No Commentary)",
+    "channel": "Final Chase"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "Art the Clown With 4 INSANE Builds | Dead by Daylight (No Commentary)",
+    "found": "2026-11-27"
+   }
+  },
+  {
+   "title": "Art the Clown With 4 INSANE Builds",
+   "role": "killer",
+   "killer": "The Clown",
+   "perks": [
+    "Scourge Hook: Pain Resonance",
+    "Hex: Undying",
+    "Hex: Ruin",
+    "Corrupt Intervention"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Final Chase",
+    "url": "https://www.youtube.com/watch?v=Ri2XUM0Y2dA",
+    "date": "2026-11-27"
+   },
+   "video": {
+    "id": "Ri2XUM0Y2dA",
+    "title": "Art the Clown With 4 INSANE Builds | Dead by Daylight (No Commentary)",
+    "channel": "Final Chase"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "Art the Clown With 4 INSANE Builds | Dead by Daylight (No Commentary)",
+    "found": "2026-11-27"
+   }
+  },
+  {
+   "title": "Art the Clown With 4 INSANE Builds",
+   "role": "killer",
+   "killer": "The Clown",
+   "perks": [
+    "Pop Goes the Weasel",
+    "Brutal Strength",
+    "Funny Business",
+    "Lay Waste"
+   ],
+   "categories": [
+    "creator"
+   ],
+   "tags": [],
+   "source": {
+    "name": "Final Chase",
+    "url": "https://www.youtube.com/watch?v=Ri2XUM0Y2dA",
+    "date": "2026-11-27"
+   },
+   "video": {
+    "id": "Ri2XUM0Y2dA",
+    "title": "Art the Clown With 4 INSANE Builds | Dead by Daylight (No Commentary)",
+    "channel": "Final Chase"
+   },
+   "detection": {
+    "from": "description",
+    "videoTitle": "Art the Clown With 4 INSANE Builds | Dead by Daylight (No Commentary)",
+    "found": "2026-11-27"
+   }
+  },
+  {
    "title": "Stealth Terrifier",
    "role": "killer",
    "killer": null,
